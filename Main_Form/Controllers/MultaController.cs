@@ -10,61 +10,57 @@ namespace iCantina.Controllers
 {
     public class MultaController
     {
-        public static List<Multa> GetMulta()
+
+        public CantinaContext db;
+
+        public MultaController(CantinaContext db)
         {
-            using (var db = new CantinaContext())
-            {
+            this.db = db;
+        }
+        public List<Multa> GetMulta()
+        {
                 return db.Multas.ToList();
-            }
         }
 
-        public static bool VerificarMulta(decimal valor, int numHoras)
+        public bool VerificarMulta(decimal valor, int numHoras)
         {
-            using (var db = new CantinaContext())
-            {
                 return db.Multas.Any(m => m.NumHoras == numHoras);
-            }
         }
 
-        public static void AddPrato(decimal valor, int numHoras)
+        public Multa AddMulta(decimal valor, int numHoras)
         {
             if (VerificarMulta(valor, numHoras))
             {
-                MessageBox.Show("Essa multa já foi criada com esse número de horas!");
-                return;
+                throw new Exception ("Essa multa já foi criada com esse número de horas!");
             }
-            using (var db = new CantinaContext())
-            {
-                var multa = new Multa(valor, numHoras);
-                db.Multas.Add(multa);
-                db.SaveChanges();
-            }
+          
+            var multa = new Multa(valor, numHoras);
+            db.Multas.Add(multa);
+            db.SaveChanges();
+
+            return multa;
+
         }
 
-        public static void UpdatePrato(int id, decimal valor, int numHoras)
+        public void UpdateMulta(int id, decimal valor, int numHoras)
         {
             if (VerificarMulta(valor, numHoras))
             {
-                MessageBox.Show("Essa multa já foi criada com esse número de horas!");
-                return;
+                throw new Exception("Essa multa já foi criada com esse número de horas!");
             }
-            using (var db = new CantinaContext())
-            {
-                var multa = db.Multas.Find(id);
-                multa.Valor = valor;
-                multa.NumHoras = numHoras;
-                db.SaveChanges();
-            }
+
+            var multa = db.Multas.Where(m => m.ID == id).FirstOrDefault();
+            multa.Valor = valor;
+            multa.NumHoras = numHoras;
+            db.SaveChanges();
+
         }
 
-        public static void DeleteMulta(int id)
-        {
-            using (var db = new CantinaContext())
-            {
-                var multa = db.Multas.Find(id);
-                db.Multas.Remove(multa);
-                db.SaveChanges();
-            }
+        public void DeleteMulta(int id)
+        { 
+            var multa = db.Multas.Where(m => m.ID == id).FirstOrDefault();
+            db.Multas.Remove(multa);
+            db.SaveChanges(); 
         }
     }
 }

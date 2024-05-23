@@ -8,6 +8,7 @@ namespace iCantina.Models
 {
     public class Prato
     {
+        public int ID { get; set; }
         public string Descricao { get; set; }
         public string Tipo { get; set; }
         public bool Ativo { get; set; }

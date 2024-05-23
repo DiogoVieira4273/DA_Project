@@ -8,6 +8,7 @@ namespace iCantina.Models
 {
     public class Multa
     {
+        public int ID { get; set; }
         public decimal Valor { get; set; }
         public int NumHoras { get; set; }
 

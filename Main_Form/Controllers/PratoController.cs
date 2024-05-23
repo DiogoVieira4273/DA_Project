@@ -1,6 +1,7 @@
 ﻿using iCantina.Models;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,63 +11,61 @@ namespace iCantina.Controllers
 {
     public class PratoController
     {
-        public static List<Prato> GetPrato()
+        public CantinaContext db;
+
+        public PratoController(CantinaContext db)
         {
-            using (var db = new CantinaContext())
-            {
+            this.db = db;
+        }
+        public List<Prato> GetPrato()
+        {
+           
                 return db.Pratos.ToList();
-            }
+            
         }
 
-        public static bool VerificarPrato(string descricao)
+        public  bool VerificarPrato(string descricao)
         {
             descricao = descricao.ToLower();
-            using (var db = new CantinaContext())
-            {
-                return db.Pratos.Any(p => p.Descricao == descricao);
-            }
+            return db.Pratos.Any(p => p.Descricao == descricao);
+            
         }
 
-        public static void AddPrato(string descricao, string tipo, bool ativo)
+        public Prato AddPrato(string descricao, string tipo, bool ativo)
         {
             if (VerificarPrato(descricao))
             {
-                MessageBox.Show("Esse prato já foi criado!");
-                return;
+                throw new Exception("Esse prato já foi criado!");
             }
-            using (var db = new CantinaContext())
-            {
-                var prato = new Prato(descricao, tipo, ativo);
-                db.Pratos.Add(prato);
-                db.SaveChanges();
-            }
+            
+            var prato = new Prato(descricao, tipo, ativo);
+            db.Pratos.Add(prato);
+            db.SaveChanges();
+
+            return prato;
         }
 
-        public static void UpdatePrato(int id, string descricao, string tipo, bool ativo)
+        public void UpdatePrato(int id, string descricao, string tipo, bool ativo)
         {
             if (VerificarPrato(descricao))
             {
-                MessageBox.Show("Esse prato já foi criado!");
-                return;
+                throw new Exception("Esse prato já foi criado!");
+
             }
-            using (var db = new CantinaContext())
-            {
-                var prato = db.Pratos.Find(id);
-                prato.Descricao = descricao;
-                prato.Tipo = tipo;
-                prato.Ativo = ativo;
-                db.SaveChanges();
-            }
+
+            var prato = db.Pratos.Where(p => p.ID == id).FirstOrDefault();
+            prato.Descricao = descricao;
+            prato.Tipo = tipo;
+            prato.Ativo = ativo;
+            db.SaveChanges();
+
         }
 
-        public static void DeletePrato(int id)
+        public void DeletePrato(int id)
         {
-            using (var db = new CantinaContext())
-            {
-                var prato = db.Pratos.Find(id);
-                db.Pratos.Remove(prato);
-                db.SaveChanges();
-            }
+            var prato = db.Pratos.Where(p => p.ID == id).FirstOrDefault();
+            db.Pratos.Remove(prato);
+            db.SaveChanges();
         }
     }
 }
