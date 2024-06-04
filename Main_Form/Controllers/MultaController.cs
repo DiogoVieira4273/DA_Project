@@ -4,7 +4,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace iCantina.Controllers
 {
@@ -19,12 +18,12 @@ namespace iCantina.Controllers
         }
         public List<Multa> GetMulta()
         {
-                return db.Multas.ToList();
+            return db.Multas.ToList();
         }
 
         public bool VerificarMulta(decimal valor, int numHoras)
         {
-                return db.Multas.Any(m => m.NumHoras == numHoras);
+            return db.Multas.Any(m => m.NumHoras == numHoras);
         }
 
         public Multa AddMulta(decimal valor, int numHoras)

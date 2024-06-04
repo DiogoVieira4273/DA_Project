@@ -58,7 +58,7 @@ namespace iCantina.Views
                     professor.NIF = int.Parse(textBox_nifProf.Text);
                     professor.Saldo = decimal.Parse(textBox_saldoProf.Text);
                     professor.Email = textBox_emailProf.Text;
-                    profController.UpdateProfessor(professor.Id, professor.Name, professor.NIF, professor.Saldo, professor.NumEstudante);
+                    profController.UpdateProfessor(professor.Id, professor.Name, professor.NIF, professor.Saldo, professor.Email);
                 }
                 else
                 {

@@ -79,7 +79,7 @@ namespace iCantina.Views
 
                 if (estudante != null)
                 {
-                    estudController.DeleteEstudantes(estudante.Id);
+                    estudController.DeleteEstudante(estudante.Id);
                     listaEstudante.Remove(estudante);
                 }
                 else

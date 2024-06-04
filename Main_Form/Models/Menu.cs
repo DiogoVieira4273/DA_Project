@@ -8,6 +8,7 @@ namespace iCantina.Models
 {
     public class Menu
     {
+        public int Id { get; set; }
         public DateTime DataHora { get; set; }
         public int QuantidadeDisponivel { get; set; }
         public decimal PrecoEstudante { get; set; }

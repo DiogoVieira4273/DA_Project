@@ -75,9 +75,11 @@
     <Compile Include="Controllers\EstudanteController.cs" />
     <Compile Include="Controllers\ExtraController.cs" />
     <Compile Include="Controllers\FuncionarioController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\MultaController.cs" />
     <Compile Include="Controllers\PratoController.cs" />
     <Compile Include="Controllers\ProfessorController.cs" />
+    <Compile Include="Controllers\ReservaController.cs" />
     <Compile Include="Controllers\UtilizadorController.cs" />
     <Compile Include="Models\CantinaContext.cs" />
     <Compile Include="Models\Cliente.cs" />
@@ -112,6 +114,18 @@
     <Compile Include="Views\Formulario_Funcionario.Designer.cs">
       <DependentUpon>Formulario_Funcionario.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Formulario_Menu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Formulario_Menu.Designer.cs">
+      <DependentUpon>Formulario_Menu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Formulario_Multa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Formulario_Multa.Designer.cs">
+      <DependentUpon>Formulario_Multa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\Formulario_Pratos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -130,6 +144,12 @@
     <Compile Include="Views\Formulario_Professor.Designer.cs">
       <DependentUpon>Formulario_Professor.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\Formulario_Reserva.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\Formulario_Reserva.Designer.cs">
+      <DependentUpon>Formulario_Reserva.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -143,8 +163,17 @@
     <EmbeddedResource Include="Views\Formulario_Estudante.resx">
       <DependentUpon>Formulario_Estudante.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\Formulario_Extras.resx">
+      <DependentUpon>Formulario_Extras.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\Formulario_Funcionario.resx">
       <DependentUpon>Formulario_Funcionario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Formulario_Multa.resx">
+      <DependentUpon>Formulario_Multa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\Formulario_Pratos.resx">
+      <DependentUpon>Formulario_Pratos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\Formulario_Principal.resx">
       <DependentUpon>Formulario_Principal.cs</DependentUpon>

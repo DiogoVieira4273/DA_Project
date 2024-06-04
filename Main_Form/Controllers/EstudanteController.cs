@@ -45,7 +45,7 @@ namespace iCantina.Controllers
             db.SaveChanges();
         }
 
-        public void DeleteEstudantes(int id)
+        public void DeleteEstudante(int id)
         {
             var estudante = db.Estudantes.Where(p => p.Id == id).FirstOrDefault();
             db.Estudantes.Remove(estudante);

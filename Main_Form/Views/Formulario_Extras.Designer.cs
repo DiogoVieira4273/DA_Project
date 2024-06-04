@@ -76,7 +76,6 @@
             this.textBox_descricaoExtra.Name = "textBox_descricaoExtra";
             this.textBox_descricaoExtra.Size = new System.Drawing.Size(338, 20);
             this.textBox_descricaoExtra.TabIndex = 3;
-            this.textBox_descricaoExtra.TextChanged += new System.EventHandler(this.textBox_descricaoExtra_TextChanged);
             // 
             // textBox_precoExtra
             // 
@@ -121,6 +120,7 @@
             this.button_editarExtra.TabIndex = 8;
             this.button_editarExtra.Text = "Editar";
             this.button_editarExtra.UseVisualStyleBackColor = true;
+            this.button_editarExtra.Click += new System.EventHandler(this.button_editarExtra_Click);
             // 
             // Formulario_Extras
             // 

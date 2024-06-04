@@ -17,18 +17,18 @@ namespace iCantina.Controllers
         {
             this.db = db;
         }
-        public List<Prato> GetPrato()
+        public List<Prato> GetPratos()
         {
-           
-                return db.Pratos.ToList();
-            
+
+            return db.Pratos.ToList();
+
         }
 
-        public  bool VerificarPrato(string descricao)
+        public bool VerificarPrato(string descricao)
         {
             descricao = descricao.ToLower();
             return db.Pratos.Any(p => p.Descricao == descricao);
-            
+
         }
 
         public Prato AddPrato(string descricao, string tipo, bool ativo)
@@ -37,7 +37,7 @@ namespace iCantina.Controllers
             {
                 throw new Exception("Esse prato já foi criado!");
             }
-            
+
             var prato = new Prato(descricao, tipo, ativo);
             db.Pratos.Add(prato);
             db.SaveChanges();
