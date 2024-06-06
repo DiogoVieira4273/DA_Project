@@ -23,7 +23,7 @@ namespace iCantina.Views
             this.db = db;
             this.funcController = new FuncionarioController(this.db);
             InitializeComponent();
-         
+            ObterFuncionarios();
         }
 
         
@@ -100,8 +100,22 @@ namespace iCantina.Views
             
         }
 
-        
+        private void ObterFuncionarios()
+        {
+            // Limpar o ListBox antes de adicionar os funcionários
+            listBoxFuncionarios.Items.Clear();
 
-      
-    }
+            // Obter os funcionários da base de dados usando o controlador
+            List<Funcionario> funcionarios = funcController.GetFuncionarios();
+
+            // Adicionar os funcionários ao ListBox
+            foreach (Funcionario funcionario in funcionarios)
+            {
+                listBoxFuncionarios.Items.Add(funcionario);
+            }
+        }
+
+
+
+        }
 }
