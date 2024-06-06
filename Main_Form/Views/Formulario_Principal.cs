@@ -15,11 +15,11 @@ namespace iCantina.Views
     public partial class Formulario_Principal : Form
     {
         private CantinaContext db;
-        public FuncionarioController funcionarioController;
+        private FuncionarioController funcController;
         public Formulario_Principal(CantinaContext db)
         {
             this.db = db;
-            this.funcionarioController = new FuncionarioController(db);
+            this.funcController = new FuncionarioController(this.db);
             InitializeComponent();
         }
 
@@ -71,8 +71,11 @@ namespace iCantina.Views
             f_p.ShowDialog();
         }
 
-        private void listBoxFuncionarios_SelectedIndexChanged(object sender, EventArgs e)
+        
+
+        private void listBox_ListaFuncionarios_SelectedIndexChanged(object sender, EventArgs e)
         {
+           listBox_ListaFuncionarios.DataSource = this.funcController.GetFuncionarios();
 
         }
     }

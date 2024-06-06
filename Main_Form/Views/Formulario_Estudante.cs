@@ -92,5 +92,10 @@ namespace iCantina.Views
                 MessageBox.Show($"{ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void textBox_nomeEstudante_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

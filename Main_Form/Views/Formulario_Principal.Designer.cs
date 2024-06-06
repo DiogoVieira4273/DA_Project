@@ -37,7 +37,7 @@
             this.button_FormReservas = new System.Windows.Forms.Button();
             this.button_FormEstudantes = new System.Windows.Forms.Button();
             this.button_FormProfessores = new System.Windows.Forms.Button();
-            this.listBoxFuncionarios = new System.Windows.Forms.ListBox();
+            this.listBox_ListaFuncionarios = new System.Windows.Forms.ListBox();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -129,14 +129,14 @@
             this.button_FormProfessores.UseVisualStyleBackColor = true;
             this.button_FormProfessores.Click += new System.EventHandler(this.button_FormProfessores_Click);
             // 
-            // listBoxFuncionarios
+            // listBox_ListaFuncionarios
             // 
-            this.listBoxFuncionarios.FormattingEnabled = true;
-            this.listBoxFuncionarios.Location = new System.Drawing.Point(613, 30);
-            this.listBoxFuncionarios.Name = "listBoxFuncionarios";
-            this.listBoxFuncionarios.Size = new System.Drawing.Size(175, 199);
-            this.listBoxFuncionarios.TabIndex = 10;
-            this.listBoxFuncionarios.SelectedIndexChanged += new System.EventHandler(this.listBoxFuncionarios_SelectedIndexChanged);
+            this.listBox_ListaFuncionarios.FormattingEnabled = true;
+            this.listBox_ListaFuncionarios.Location = new System.Drawing.Point(613, 30);
+            this.listBox_ListaFuncionarios.Name = "listBox_ListaFuncionarios";
+            this.listBox_ListaFuncionarios.Size = new System.Drawing.Size(175, 329);
+            this.listBox_ListaFuncionarios.TabIndex = 10;
+            this.listBox_ListaFuncionarios.SelectedIndexChanged += new System.EventHandler(this.listBox_ListaFuncionarios_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -154,7 +154,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 396);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.listBoxFuncionarios);
+            this.Controls.Add(this.listBox_ListaFuncionarios);
             this.Controls.Add(this.button_FormProfessores);
             this.Controls.Add(this.button_FormEstudantes);
             this.Controls.Add(this.button_FormReservas);
@@ -182,7 +182,7 @@
         private System.Windows.Forms.Button button_FormReservas;
         private System.Windows.Forms.Button button_FormEstudantes;
         private System.Windows.Forms.Button button_FormProfessores;
-        private System.Windows.Forms.ListBox listBoxFuncionarios;
+        private System.Windows.Forms.ListBox listBox_ListaFuncionarios;
         private System.Windows.Forms.Label label2;
     }
 }

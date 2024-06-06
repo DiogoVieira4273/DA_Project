@@ -118,6 +118,7 @@
             this.textBox_nomeEstudante.Name = "textBox_nomeEstudante";
             this.textBox_nomeEstudante.Size = new System.Drawing.Size(260, 20);
             this.textBox_nomeEstudante.TabIndex = 7;
+            this.textBox_nomeEstudante.TextChanged += new System.EventHandler(this.textBox_nomeEstudante_TextChanged);
             // 
             // textBox_nifEstudante
             // 
