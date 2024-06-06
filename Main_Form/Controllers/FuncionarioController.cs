@@ -16,7 +16,7 @@ namespace iCantina.Controllers
         {
             this.db = db;
         }
-        public List<Funcionario> GetFuncionario()
+        public List<Funcionario> GetFuncionarios()
         {
                 return db.Funcionarios.ToList();
         }

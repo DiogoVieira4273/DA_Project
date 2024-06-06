@@ -93,10 +93,5 @@ namespace iCantina.Views
                 MessageBox.Show($"{ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        private void listBoxFuncionarios_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
     }
 }

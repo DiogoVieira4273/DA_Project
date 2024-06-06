@@ -98,7 +98,6 @@
             this.listBoxFuncionarios.Name = "listBoxFuncionarios";
             this.listBoxFuncionarios.Size = new System.Drawing.Size(229, 225);
             this.listBoxFuncionarios.TabIndex = 6;
-            this.listBoxFuncionarios.SelectedIndexChanged += new System.EventHandler(this.listBoxFuncionarios_SelectedIndexChanged);
             // 
             // button_Registo
             // 

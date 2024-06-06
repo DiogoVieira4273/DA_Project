@@ -16,7 +16,7 @@ namespace iCantina.Controllers
         {
             this.db = db;
         }
-        public List<Multa> GetMulta()
+        public List<Multa> GetMultas()
         {
             return db.Multas.ToList();
         }
