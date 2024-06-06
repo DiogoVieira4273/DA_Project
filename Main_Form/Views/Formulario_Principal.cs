@@ -66,5 +66,10 @@ namespace iCantina.Views
             Formulario_Professor f_p = new Formulario_Professor(db);
             f_p.ShowDialog();
         }
+
+        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

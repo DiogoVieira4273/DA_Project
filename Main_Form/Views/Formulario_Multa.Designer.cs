@@ -42,7 +42,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(42, 37);
+            this.label1.Location = new System.Drawing.Point(55, 148);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(44, 13);
             this.label1.TabIndex = 0;
@@ -52,7 +52,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(42, 107);
+            this.label2.Location = new System.Drawing.Point(59, 221);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(40, 13);
             this.label2.TabIndex = 1;
@@ -60,31 +60,31 @@
             // 
             // textBox_horasMulta
             // 
-            this.textBox_horasMulta.Location = new System.Drawing.Point(92, 34);
+            this.textBox_horasMulta.Location = new System.Drawing.Point(105, 145);
             this.textBox_horasMulta.Name = "textBox_horasMulta";
-            this.textBox_horasMulta.Size = new System.Drawing.Size(486, 20);
+            this.textBox_horasMulta.Size = new System.Drawing.Size(444, 20);
             this.textBox_horasMulta.TabIndex = 2;
             // 
             // textBox_valorMulta
             // 
-            this.textBox_valorMulta.Location = new System.Drawing.Point(92, 104);
+            this.textBox_valorMulta.Location = new System.Drawing.Point(105, 218);
             this.textBox_valorMulta.Name = "textBox_valorMulta";
-            this.textBox_valorMulta.Size = new System.Drawing.Size(486, 20);
+            this.textBox_valorMulta.Size = new System.Drawing.Size(444, 20);
             this.textBox_valorMulta.TabIndex = 3;
             // 
             // listBox_Multas
             // 
             this.listBox_Multas.FormattingEnabled = true;
-            this.listBox_Multas.Location = new System.Drawing.Point(590, 158);
+            this.listBox_Multas.Location = new System.Drawing.Point(555, 68);
             this.listBox_Multas.Name = "listBox_Multas";
-            this.listBox_Multas.Size = new System.Drawing.Size(171, 238);
+            this.listBox_Multas.Size = new System.Drawing.Size(233, 316);
             this.listBox_Multas.TabIndex = 4;
             // 
             // button_registarMulta
             // 
-            this.button_registarMulta.Location = new System.Drawing.Point(36, 199);
+            this.button_registarMulta.Location = new System.Drawing.Point(105, 281);
             this.button_registarMulta.Name = "button_registarMulta";
-            this.button_registarMulta.Size = new System.Drawing.Size(75, 23);
+            this.button_registarMulta.Size = new System.Drawing.Size(75, 27);
             this.button_registarMulta.TabIndex = 5;
             this.button_registarMulta.Text = "Registar";
             this.button_registarMulta.UseVisualStyleBackColor = true;
@@ -92,9 +92,9 @@
             // 
             // button_editarMulta
             // 
-            this.button_editarMulta.Location = new System.Drawing.Point(161, 199);
+            this.button_editarMulta.Location = new System.Drawing.Point(229, 281);
             this.button_editarMulta.Name = "button_editarMulta";
-            this.button_editarMulta.Size = new System.Drawing.Size(80, 23);
+            this.button_editarMulta.Size = new System.Drawing.Size(80, 30);
             this.button_editarMulta.TabIndex = 6;
             this.button_editarMulta.Text = "Editar";
             this.button_editarMulta.UseVisualStyleBackColor = true;
@@ -102,9 +102,9 @@
             // 
             // button_apagarMulta
             // 
-            this.button_apagarMulta.Location = new System.Drawing.Point(284, 199);
+            this.button_apagarMulta.Location = new System.Drawing.Point(344, 281);
             this.button_apagarMulta.Name = "button_apagarMulta";
-            this.button_apagarMulta.Size = new System.Drawing.Size(79, 23);
+            this.button_apagarMulta.Size = new System.Drawing.Size(79, 30);
             this.button_apagarMulta.TabIndex = 7;
             this.button_apagarMulta.Text = "Apagar";
             this.button_apagarMulta.UseVisualStyleBackColor = true;
@@ -125,6 +125,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Formulario_Multa";
             this.Text = "Formulario_Multa";
+            this.Load += new System.EventHandler(this.Formulario_Multa_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

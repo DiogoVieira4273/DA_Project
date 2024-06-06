@@ -37,16 +37,17 @@
             this.button_FormReservas = new System.Windows.Forms.Button();
             this.button_FormEstudantes = new System.Windows.Forms.Button();
             this.button_FormProfessores = new System.Windows.Forms.Button();
+            this.listBox1 = new System.Windows.Forms.ListBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(296, 9);
+            this.label1.Location = new System.Drawing.Point(296, 56);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 13);
+            this.label1.Size = new System.Drawing.Size(0, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "fazer depois.....";
             // 
             // button_Funcionarios
             // 
@@ -128,11 +129,32 @@
             this.button_FormProfessores.UseVisualStyleBackColor = true;
             this.button_FormProfessores.Click += new System.EventHandler(this.button_FormProfessores_Click);
             // 
+            // listBox1
+            // 
+            this.listBox1.FormattingEnabled = true;
+            this.listBox1.Location = new System.Drawing.Point(613, 30);
+            this.listBox1.Name = "listBox1";
+            this.listBox1.Size = new System.Drawing.Size(175, 199);
+            this.listBox1.TabIndex = 10;
+            this.listBox1.SelectedIndexChanged += new System.EventHandler(this.listBox1_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(613, 11);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(83, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "Funcionários:";
+            // 
             // Formulario_Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 396);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.listBox1);
             this.Controls.Add(this.button_FormProfessores);
             this.Controls.Add(this.button_FormEstudantes);
             this.Controls.Add(this.button_FormReservas);
@@ -160,6 +182,8 @@
         private System.Windows.Forms.Button button_FormReservas;
         private System.Windows.Forms.Button button_FormEstudantes;
         private System.Windows.Forms.Button button_FormProfessores;
+        private System.Windows.Forms.ListBox listBox1;
+        private System.Windows.Forms.Label label2;
     }
 }
 

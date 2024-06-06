@@ -91,5 +91,10 @@ namespace iCantina.Views
                 MessageBox.Show($"{ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void Formulario_Multa_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

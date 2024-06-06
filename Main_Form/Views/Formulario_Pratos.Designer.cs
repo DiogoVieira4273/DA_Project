@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.label_descricaoExtra = new System.Windows.Forms.Label();
-            this.label_precoExtra = new System.Windows.Forms.Label();
+            this.label_descricaoPrato = new System.Windows.Forms.Label();
+            this.label_TipoPrato = new System.Windows.Forms.Label();
             this.textBox_descricaoPrato = new System.Windows.Forms.TextBox();
             this.textBox_tipoPrato = new System.Windows.Forms.TextBox();
             this.listBox_Pratos = new System.Windows.Forms.ListBox();
@@ -50,25 +50,25 @@
             this.checkBox1.UseVisualStyleBackColor = true;
             this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
             // 
-            // label_descricaoExtra
+            // label_descricaoPrato
             // 
-            this.label_descricaoExtra.AutoSize = true;
-            this.label_descricaoExtra.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_descricaoExtra.Location = new System.Drawing.Point(90, 111);
-            this.label_descricaoExtra.Name = "label_descricaoExtra";
-            this.label_descricaoExtra.Size = new System.Drawing.Size(68, 13);
-            this.label_descricaoExtra.TabIndex = 1;
-            this.label_descricaoExtra.Text = "Descricao:";
+            this.label_descricaoPrato.AutoSize = true;
+            this.label_descricaoPrato.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_descricaoPrato.Location = new System.Drawing.Point(90, 111);
+            this.label_descricaoPrato.Name = "label_descricaoPrato";
+            this.label_descricaoPrato.Size = new System.Drawing.Size(68, 13);
+            this.label_descricaoPrato.TabIndex = 1;
+            this.label_descricaoPrato.Text = "Descricao:";
             // 
-            // label_precoExtra
+            // label_TipoPrato
             // 
-            this.label_precoExtra.AutoSize = true;
-            this.label_precoExtra.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label_precoExtra.Location = new System.Drawing.Point(101, 165);
-            this.label_precoExtra.Name = "label_precoExtra";
-            this.label_precoExtra.Size = new System.Drawing.Size(36, 13);
-            this.label_precoExtra.TabIndex = 2;
-            this.label_precoExtra.Text = "Tipo:";
+            this.label_TipoPrato.AutoSize = true;
+            this.label_TipoPrato.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label_TipoPrato.Location = new System.Drawing.Point(101, 165);
+            this.label_TipoPrato.Name = "label_TipoPrato";
+            this.label_TipoPrato.Size = new System.Drawing.Size(36, 13);
+            this.label_TipoPrato.TabIndex = 2;
+            this.label_TipoPrato.Text = "Tipo:";
             // 
             // textBox_descricaoPrato
             // 
@@ -133,11 +133,11 @@
             this.Controls.Add(this.listBox_Pratos);
             this.Controls.Add(this.textBox_tipoPrato);
             this.Controls.Add(this.textBox_descricaoPrato);
-            this.Controls.Add(this.label_precoExtra);
-            this.Controls.Add(this.label_descricaoExtra);
+            this.Controls.Add(this.label_TipoPrato);
+            this.Controls.Add(this.label_descricaoPrato);
             this.Controls.Add(this.checkBox1);
             this.Name = "Formulario_Pratos";
-            this.Text = "Formulario_Extras";
+            this.Text = "Formulario_Prato";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -146,8 +146,8 @@
         #endregion
 
         private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Label label_descricaoExtra;
-        private System.Windows.Forms.Label label_precoExtra;
+        private System.Windows.Forms.Label label_descricaoPrato;
+        private System.Windows.Forms.Label label_TipoPrato;
         private System.Windows.Forms.TextBox textBox_descricaoPrato;
         private System.Windows.Forms.TextBox textBox_tipoPrato;
         private System.Windows.Forms.ListBox listBox_Pratos;
