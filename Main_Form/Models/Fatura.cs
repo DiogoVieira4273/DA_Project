@@ -8,6 +8,7 @@ namespace iCantina.Models
 {
     public class Fatura
     {
+        public int ID { get; set; }
         public decimal Total { get; set; }
         public DateTime DataHora { get; set; }
 

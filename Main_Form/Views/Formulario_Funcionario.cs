@@ -15,7 +15,8 @@ namespace iCantina.Views
 {
     public partial class Formulario_Funcionario : Form
     {
-        private List<Funcionario> listaFuncionario = new List<Funcionario>();
+
+        private BindingList<Funcionario> listaFuncionario = new BindingList<Funcionario>();
         public CantinaContext db;
         private FuncionarioController funcController;
         public Formulario_Funcionario(CantinaContext db)
@@ -96,7 +97,7 @@ namespace iCantina.Views
 
         private void listBoxFuncionarios_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            
         }
     }
 }
