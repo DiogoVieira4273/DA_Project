@@ -18,11 +18,10 @@ namespace iCantina
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            using(var db = new CantinaContext())
+            using (var db = new CantinaContext())
             {
-               Application.Run(new Formulario_Principal(db));
+                Application.Run(new Formulario_Principal(db));
             }
-           
         }
     }
 }

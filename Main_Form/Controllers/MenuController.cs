@@ -16,7 +16,7 @@ namespace iCantina.Controllers
             this.db = db;
         }
 
-        public List<Menu> GetMenu()
+        public List<Menu> GetMenus()
         {
             return db.Menus.ToList();
         }

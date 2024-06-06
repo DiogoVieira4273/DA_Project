@@ -15,7 +15,7 @@ namespace iCantina.Controllers
             this.db = db;
         }
 
-        public List<Professor> GetProfessor()
+        public List<Professor> GetProfessores()
         {
             return db.Professores.ToList();
         }

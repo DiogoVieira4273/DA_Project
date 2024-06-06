@@ -15,8 +15,7 @@ namespace iCantina.Views
 {
     public partial class Formulario_Funcionario : Form
     {
-
-        private BindingList<Funcionario> listaFuncionario = new BindingList<Funcionario>();
+        private List<Funcionario> listaFuncionario = new List<Funcionario>();
         public CantinaContext db;
         private FuncionarioController funcController;
         public Formulario_Funcionario(CantinaContext db)

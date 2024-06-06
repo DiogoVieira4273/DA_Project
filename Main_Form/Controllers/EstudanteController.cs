@@ -16,7 +16,7 @@ namespace iCantina.Controllers
             this.db = db;
         }
 
-        public List<Estudante> GetEstudante()
+        public List<Estudante> GetEstudantes()
         {
             return db.Estudantes.ToList();
         }

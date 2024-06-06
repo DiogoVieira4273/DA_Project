@@ -76,6 +76,7 @@
     <Compile Include="Controllers\ExtraController.cs" />
     <Compile Include="Controllers\FaturaController.cs" />
     <Compile Include="Controllers\FuncionarioController.cs" />
+    <Compile Include="Controllers\ItemFaturaController.cs" />
     <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\MultaController.cs" />
     <Compile Include="Controllers\PratoController.cs" />

@@ -17,7 +17,7 @@ namespace iCantina.Controllers
             this.db = db;
         }
 
-        public List<Extra> GetExtra()
+        public List<Extra> GetExtras()
         {
             return db.Extras.ToList();
         }
