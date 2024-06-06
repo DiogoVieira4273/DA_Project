@@ -25,7 +25,7 @@ namespace iCantina.Controllers
             validarProfessor(nome, nif, saldo, email);
             UtilizadorController.VerificarNIF(nif, db);
 
-            var professor = new Professor(nome, nif, saldo, email);
+            var professor = new Professor {Name= nome,NIF= nif, Saldo=saldo, Email=email };
             db.Professores.Add(professor);
             db.SaveChanges();
 

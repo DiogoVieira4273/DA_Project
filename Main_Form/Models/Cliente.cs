@@ -10,9 +10,6 @@ namespace iCantina.Models
     {
         public decimal Saldo { get; set; }
 
-        public Cliente(string name, int nif, decimal saldo) : base(name,nif) 
-        {
-            Saldo = saldo;
-        }
+    
     }
 }

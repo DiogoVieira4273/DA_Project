@@ -10,9 +10,6 @@ namespace iCantina.Models
     {
         public string Email { get; set; }
 
-        public Professor(string name, int nif, decimal saldo, string email) : base(name, nif, saldo)
-        {
-            Email = email;
-        }
+       
     }
 }

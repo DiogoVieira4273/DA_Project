@@ -17,5 +17,7 @@ namespace iCantina.Models
             Total = total;
             DataHora = dataHora;
         }
+
+
     }
 }

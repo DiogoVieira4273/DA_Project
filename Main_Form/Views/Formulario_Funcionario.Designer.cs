@@ -94,9 +94,9 @@
             // listBoxFuncionarios
             // 
             this.listBoxFuncionarios.FormattingEnabled = true;
-            this.listBoxFuncionarios.Location = new System.Drawing.Point(408, 37);
+            this.listBoxFuncionarios.Location = new System.Drawing.Point(384, 37);
             this.listBoxFuncionarios.Name = "listBoxFuncionarios";
-            this.listBoxFuncionarios.Size = new System.Drawing.Size(229, 225);
+            this.listBoxFuncionarios.Size = new System.Drawing.Size(266, 225);
             this.listBoxFuncionarios.TabIndex = 6;
             this.listBoxFuncionarios.SelectedIndexChanged += new System.EventHandler(this.listBoxFuncionarios_SelectedIndexChanged);
             // 
@@ -134,7 +134,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(649, 286);
+            this.ClientSize = new System.Drawing.Size(662, 290);
             this.Controls.Add(this.button_Guardar);
             this.Controls.Add(this.button_Apagar);
             this.Controls.Add(this.button_Registo);

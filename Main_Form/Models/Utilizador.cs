@@ -12,10 +12,5 @@ namespace iCantina.Models
         public string Name { get; set; }
         public int NIF { get; set; }
 
-        public Utilizador(string name, int nif)
-        {
-            Name = name;
-            NIF = nif;
-        }
     }
 }

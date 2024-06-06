@@ -24,6 +24,7 @@ namespace iCantina.Views
             this.db = db;
             this.funcController = new FuncionarioController(this.db);
             InitializeComponent();
+            ObterFuncionarios();
         }
 
         
@@ -99,5 +100,23 @@ namespace iCantina.Views
         {
             
         }
+
+        private void ObterFuncionarios()
+        {
+            listaFuncionario.Clear();
+
+           
+            List<Funcionario> funcionarios = funcController.GetFuncionarios();
+
+           
+            foreach (Funcionario funcionario in funcionarios)
+            {
+                listaFuncionario.Add(funcionario);
+            }
+
+            
+        }
+
+      
     }
 }

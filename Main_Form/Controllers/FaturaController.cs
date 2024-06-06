@@ -15,18 +15,7 @@ namespace iCantina.Controllers
             this.db = db;
         }
 
-        public List<Fatura> GetFaturas()
-        {
-            return db.Faturas.ToList();
-        }
-
-        public Fatura AddFatura(decimal total, DateTime dataHora, Reserva reserva, List<ItemFatura> itemFaturas)
-        {
-            var fatura = new Fatura { Total = total, DataHora = dataHora, Reserva = reserva, ItemFatura = itemFaturas };
-            db.Faturas.Add(fatura);
-            db.SaveChanges();
-
-            return fatura;
-        }
+        
+       
     }
 }

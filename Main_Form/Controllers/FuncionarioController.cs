@@ -26,7 +26,7 @@ namespace iCantina.Controllers
 
             validarFuncionario(nome, nif, username);
             UtilizadorController.VerificarNIF(nif, this.db);
-            var funcionario = new Funcionario(nome, nif, username);
+            var funcionario = new Funcionario { Name=nome,NIF=nif, Username=username };
             db.Funcionarios.Add(funcionario);
             db.SaveChanges();
 

@@ -25,7 +25,7 @@ namespace iCantina.Controllers
         {
             validarEstudante(nome, nif, saldo, numEstudante);
             UtilizadorController.VerificarNIF(nif, db);
-            var estudante = new Estudante(nome, nif, saldo, numEstudante);
+            var estudante = new Estudante { Name = nome,NIF = nif, Saldo = saldo, NumEstudante = numEstudante };
             db.Estudantes.Add(estudante);
             db.SaveChanges();
 

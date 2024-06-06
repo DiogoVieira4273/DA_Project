@@ -10,9 +10,6 @@ namespace iCantina.Models
     {
         public int NumEstudante {  get; set; }
         
-        public Estudante(string name, int nif, decimal saldo, int numEstudante) : base(name, nif, saldo)
-        {
-            NumEstudante = numEstudante;
-        }
+        
     }
 }

@@ -10,9 +10,11 @@ namespace iCantina.Models
     {
         public string Username { get; set; }
 
-        public Funcionario(string name, int nif, string username) : base(name,nif)
+       
+
+        public override string ToString()
         {
-            Username = username;
+            return $"{Name}, {NIF}, {Username}";
         }
     }
 }

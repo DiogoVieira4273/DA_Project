@@ -75,7 +75,7 @@ namespace iCantina.Views
 
         private void listBox_ListaFuncionarios_SelectedIndexChanged(object sender, EventArgs e)
         {
-           listBox_ListaFuncionarios.DataSource = this.funcController.GetFuncionarios();
+           //listBox_ListaFuncionarios.DataSource = this.funcController.GetFuncionarios();
 
         }
     }
