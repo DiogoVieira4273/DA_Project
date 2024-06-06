@@ -115,7 +115,5 @@ namespace iCantina.Views
             }
         }
 
-
-
         }
 }
