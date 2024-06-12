@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace iCantina.Models
 {
@@ -13,11 +14,9 @@ namespace iCantina.Models
         public string Tipo { get; set; }
         public bool Ativo { get; set; }
 
-        public Prato(string descricao, string tipo, bool ativo)
+        public override string ToString()
         {
-            Descricao = descricao;
-            Tipo = tipo;
-            Ativo = ativo;
+            return $"{Descricao}, {Tipo}, {Ativo}";
         }
     }
 }

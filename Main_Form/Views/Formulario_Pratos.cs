@@ -22,6 +22,7 @@ namespace iCantina.Views
             this.db = db;
             this.pratoController = new PratoController(this.db);
             InitializeComponent();
+            ObterPratos();
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -43,12 +44,7 @@ namespace iCantina.Views
                 Prato prato = this.pratoController.AddPrato(textBox_descricaoPrato.Text, textBox_tipoPrato.Text, checkBox1.Checked);
 
                 listaPratos.Add(prato);
-                listBox_Pratos.Items.Clear();
-                foreach (Prato pr in listaPratos)
-                {
-                    listBox_Pratos.Items.Add(pr);
-                    listBox_Pratos.DataSource = prato;
-                }
+                AtualizarListBoxPratos();
 
                 MessageBox.Show("Prato registado com sucesso!");
             }
@@ -70,6 +66,7 @@ namespace iCantina.Views
                     prato.Tipo = textBox_tipoPrato.Text;
                     prato.Ativo = checkBox1.Checked;
                     pratoController.UpdatePrato(prato.ID, prato.Descricao, prato.Tipo, prato.Ativo);
+                    AtualizarListBoxPratos();
                 }
                 else
                 {
@@ -92,6 +89,7 @@ namespace iCantina.Views
                 {
                     pratoController.DeletePrato(prato.ID);
                     listaPratos.Remove(prato);
+                    AtualizarListBoxPratos();
                 }
                 else
                 {
@@ -101,6 +99,22 @@ namespace iCantina.Views
             catch (Exception ex)
             {
                 MessageBox.Show($"{ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ObterPratos()
+        {
+            listaPratos = pratoController.GetPratos();
+            AtualizarListBoxPratos();
+        }
+
+        private void AtualizarListBoxPratos()
+        {
+            listBox_Pratos.Items.Clear();
+
+            foreach (Prato pr in listaPratos)
+            {
+                listBox_Pratos.Items.Add(pr);
             }
         }
     }

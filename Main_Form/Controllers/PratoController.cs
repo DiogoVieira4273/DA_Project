@@ -1,11 +1,13 @@
 ﻿using iCantina.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
 
 namespace iCantina.Controllers
 {
@@ -17,28 +19,30 @@ namespace iCantina.Controllers
         {
             this.db = db;
         }
-        public List<Prato> GetPratos()
+        public BindingList<Prato> GetPratos()
         {
-
-            return db.Pratos.ToList();
-
+            var listaPrato = db.Pratos.ToList();
+            return new BindingList<Prato>(listaPrato);
         }
 
-        public bool VerificarPrato(string descricao)
+        public bool VerificarPrato(string tipo)
         {
-            descricao = descricao.ToLower();
-            return db.Pratos.Any(p => p.Descricao == descricao);
+            tipo = tipo.ToLower();
+            var tiposValidos = new List<string> { "carne", "peixe", "vegetariano" };
 
+            if (!tiposValidos.Contains(tipo))
+            {
+                throw new Exception("Tipo indisponível (Carne, Peixe, Vegetariano)!");
+            }
+
+            return db.Pratos.Any(p => p.Tipo.ToLower() == tipo);
         }
 
         public Prato AddPrato(string descricao, string tipo, bool ativo)
         {
-            if (VerificarPrato(descricao))
-            {
-                throw new Exception("Esse prato já foi criado!");
-            }
+            VerificarPrato(tipo);
 
-            var prato = new Prato(descricao, tipo, ativo);
+            var prato = new Prato { Descricao = descricao, Tipo = tipo, Ativo = ativo };
             db.Pratos.Add(prato);
             db.SaveChanges();
 
@@ -47,12 +51,7 @@ namespace iCantina.Controllers
 
         public void UpdatePrato(int id, string descricao, string tipo, bool ativo)
         {
-            if (VerificarPrato(descricao))
-            {
-                throw new Exception("Esse prato já foi criado!");
-
-            }
-
+            VerificarPrato(tipo);
             var prato = db.Pratos.Where(p => p.ID == id).FirstOrDefault();
             prato.Descricao = descricao;
             prato.Tipo = tipo;

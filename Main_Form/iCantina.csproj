@@ -83,6 +83,11 @@
     <Compile Include="Controllers\ProfessorController.cs" />
     <Compile Include="Controllers\ReservaController.cs" />
     <Compile Include="Controllers\UtilizadorController.cs" />
+    <Compile Include="Migrations\202406121112437_cantina.cs" />
+    <Compile Include="Migrations\202406121112437_cantina.Designer.cs">
+      <DependentUpon>202406121112437_cantina.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CantinaContext.cs" />
     <Compile Include="Models\Cliente.cs" />
     <Compile Include="Models\Estudante.cs" />
@@ -94,6 +99,7 @@
     <Compile Include="Models\Multa.cs" />
     <Compile Include="Models\Prato.cs" />
     <Compile Include="Models\Professor.cs" />
+    <Compile Include="Models\Quantidade.cs" />
     <Compile Include="Models\Reserva.cs" />
     <Compile Include="Models\Utilizador.cs" />
     <Compile Include="Program.cs" />
@@ -152,6 +158,9 @@
     <Compile Include="Views\Formulario_Reserva.Designer.cs">
       <DependentUpon>Formulario_Reserva.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Migrations\202406121112437_cantina.resx">
+      <DependentUpon>202406121112437_cantina.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
