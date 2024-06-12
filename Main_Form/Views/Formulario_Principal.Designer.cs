@@ -166,6 +166,7 @@
             this.Controls.Add(this.label1);
             this.Name = "Formulario_Principal";
             this.Text = "Formulário_Principal";
+            this.Load += new System.EventHandler(this.Formulario_Principal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

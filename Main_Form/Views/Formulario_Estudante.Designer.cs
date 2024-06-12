@@ -118,7 +118,6 @@
             this.textBox_nomeEstudante.Name = "textBox_nomeEstudante";
             this.textBox_nomeEstudante.Size = new System.Drawing.Size(260, 20);
             this.textBox_nomeEstudante.TabIndex = 7;
-            this.textBox_nomeEstudante.TextChanged += new System.EventHandler(this.textBox_nomeEstudante_TextChanged);
             // 
             // textBox_nifEstudante
             // 
@@ -144,9 +143,9 @@
             // listBox_estudante
             // 
             this.listBox_estudante.FormattingEnabled = true;
-            this.listBox_estudante.Location = new System.Drawing.Point(549, 75);
+            this.listBox_estudante.Location = new System.Drawing.Point(476, 75);
             this.listBox_estudante.Name = "listBox_estudante";
-            this.listBox_estudante.Size = new System.Drawing.Size(214, 277);
+            this.listBox_estudante.Size = new System.Drawing.Size(287, 277);
             this.listBox_estudante.TabIndex = 11;
             // 
             // Formulario_Estudante

@@ -22,6 +22,7 @@ namespace iCantina.Views
             this.db = db;
             this.profController = new ProfessorController(this.db);
             InitializeComponent();
+            ObterProfessores();
         }
 
         private void button_registarProfessor_Click(object sender, EventArgs e)
@@ -31,12 +32,7 @@ namespace iCantina.Views
                 Professor professor = this.profController.AddProfessor(textBox_nomeProf.Text, int.Parse(textBox_nifProf.Text), decimal.Parse(textBox_saldoProf.Text), textBox_emailProf.Text);
 
                 listaProfessor.Add(professor);
-                listBox_Professor.Items.Clear();
-                foreach (Professor p in listaProfessor)
-                {
-                    listBox_Professor.Items.Add(p);
-                    listBox_Professor.DataSource = professor;
-                }
+                AtualizarListBoxProfessores();
 
                 MessageBox.Show("Professor registrado com sucesso!");
             }
@@ -59,6 +55,7 @@ namespace iCantina.Views
                     professor.Saldo = decimal.Parse(textBox_saldoProf.Text);
                     professor.Email = textBox_emailProf.Text;
                     profController.UpdateProfessor(professor.Id, professor.Name, professor.NIF, professor.Saldo, professor.Email);
+                    AtualizarListBoxProfessores();
                 }
                 else
                 {
@@ -81,6 +78,7 @@ namespace iCantina.Views
                 {
                     profController.DeleteProfessor(professor.Id);
                     listaProfessor.Remove(professor);
+                    AtualizarListBoxProfessores();
                 }
                 else
                 {
@@ -90,6 +88,22 @@ namespace iCantina.Views
             catch (Exception ex)
             {
                 MessageBox.Show($"{ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ObterProfessores()
+        {
+            listaProfessor = profController.GetProfessores();
+            AtualizarListBoxProfessores();
+        }
+
+        private void AtualizarListBoxProfessores()
+        {
+            listBox_Professor.Items.Clear();
+
+            foreach (Professor p in listaProfessor)
+            {
+                listBox_Professor.Items.Add(p);
             }
         }
     }

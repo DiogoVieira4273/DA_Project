@@ -1,6 +1,7 @@
 ﻿using iCantina.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,9 +17,11 @@ namespace iCantina.Controllers
         {
             this.db = db;
         }
-        public List<Funcionario> GetFuncionarios()
+        public BindingList<Funcionario> GetFuncionarios()
         {
-                return db.Funcionarios.ToList();
+            //return db.Funcionarios.ToList();
+            var listaFuncionario = db.Funcionarios.ToList();
+            return new BindingList<Funcionario>(listaFuncionario);
         }
 
         public Funcionario AddFuncionario(string nome, int nif, string username)

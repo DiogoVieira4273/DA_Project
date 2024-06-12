@@ -14,11 +14,15 @@ namespace iCantina.Views
 {
     public partial class Formulario_Principal : Form
     {
+        private BindingList<Funcionario> listaFuncionario = new BindingList<Funcionario>();
         private CantinaContext db;
+        private FuncionarioController funcController;
         public Formulario_Principal(CantinaContext db)
         {
             this.db = db;
+            this.funcController = new FuncionarioController(this.db);
             InitializeComponent();
+            ObterFuncionarios();
         }
 
         private void button_FormPratos_Click(object sender, EventArgs e)
@@ -54,6 +58,8 @@ namespace iCantina.Views
         private void button_FormFuncionarios_Click(object sender, EventArgs e)
         {
             Formulario_Funcionario f_f = new Formulario_Funcionario(db);
+            // Adicionar um evento para atualizar a lista de funcionários quando o formulário de funcionários for fechado
+            f_f.FormClosed += (s, args) => ObterFuncionarios();
             f_f.ShowDialog();
         }
 
@@ -71,7 +77,25 @@ namespace iCantina.Views
 
         private void listBox_ListaFuncionarios_SelectedIndexChanged(object sender, EventArgs e)
         {
-           //listBox_ListaFuncionarios.DataSource = this.funcController.GetFuncionarios();
+           
+        }
+
+        private void ObterFuncionarios()
+        {
+            
+            listBox_ListaFuncionarios.Items.Clear();
+
+            BindingList<Funcionario> funcionarios = funcController.GetFuncionarios();
+
+            
+            foreach (Funcionario funcionario in funcionarios)
+            {
+                listBox_ListaFuncionarios.Items.Add(funcionario);
+            }
+        }
+
+        private void Formulario_Principal_Load(object sender, EventArgs e)
+        {
 
         }
     }

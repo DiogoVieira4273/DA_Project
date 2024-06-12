@@ -9,7 +9,11 @@ namespace iCantina.Models
     public class Estudante : Cliente
     {
         public int NumEstudante {  get; set; }
-        
-        
+
+
+        public override string ToString()
+        {
+            return $"{Name}, {NIF}, {Saldo}€,{NumEstudante}";
+        }
     }
 }

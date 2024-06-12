@@ -1,6 +1,7 @@
 ﻿using iCantina.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,9 +16,11 @@ namespace iCantina.Controllers
             this.db = db;
         }
 
-        public List<Professor> GetProfessores()
+        public BindingList<Professor> GetProfessores()
         {
-            return db.Professores.ToList();
+            //return db.Professores.ToList();
+            var listaProfessor = db.Professores.ToList();
+            return new BindingList<Professor>(listaProfessor);
         }
 
         public Professor AddProfessor(string nome, int nif, decimal saldo, string email)

@@ -1,6 +1,7 @@
 ﻿using iCantina.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,9 +17,11 @@ namespace iCantina.Controllers
             this.db = db;
         }
 
-        public List<Estudante> GetEstudantes()
+        public BindingList<Estudante> GetEstudantes()
         {
-            return db.Estudantes.ToList();
+            //return db.Estudantes.ToList();
+            var listaEstudante = db.Estudantes.ToList();
+            return new BindingList<Estudante>(listaEstudante);
         }
 
         public Estudante AddEstudante(string nome, int nif, decimal saldo, int numEstudante)

@@ -22,6 +22,7 @@ namespace iCantina.Views
             this.db = db;
             this.estudController = new EstudanteController(this.db);
             InitializeComponent();
+            ObterEstudantes();
         }
 
         private void button_addEstudante_Click(object sender, EventArgs e)
@@ -31,12 +32,7 @@ namespace iCantina.Views
                 Estudante estudante = this.estudController.AddEstudante(textBox_nomeEstudante.Text, int.Parse(textBox_nifEstudante.Text), decimal.Parse(textBox_saldoEstudante.Text), int.Parse(textBox_nEstudante.Text));
 
                 listaEstudante.Add(estudante);
-                listBox_estudante.Items.Clear();
-                foreach (Estudante es in listaEstudante)
-                {
-                    listBox_estudante.Items.Add(es);
-                    listBox_estudante.DataSource = estudante;
-                }
+                AtualizarListBoxEstudantes();
 
                 MessageBox.Show("Estudante registado com sucesso!");
             }
@@ -59,6 +55,7 @@ namespace iCantina.Views
                     estudante.Saldo = decimal.Parse(textBox_saldoEstudante.Text);
                     estudante.NumEstudante = int.Parse(textBox_nEstudante.Text);
                     estudController.UpdateEstudante(estudante.Id,estudante.Name,estudante.NIF,estudante.Saldo, estudante.NumEstudante);
+                    AtualizarListBoxEstudantes();
                 }
                 else
                 {
@@ -81,6 +78,7 @@ namespace iCantina.Views
                 {
                     estudController.DeleteEstudante(estudante.Id);
                     listaEstudante.Remove(estudante);
+                    AtualizarListBoxEstudantes();
                 }
                 else
                 {
@@ -93,9 +91,20 @@ namespace iCantina.Views
             }
         }
 
-        private void textBox_nomeEstudante_TextChanged(object sender, EventArgs e)
+        private void ObterEstudantes()
         {
+            listaEstudante = estudController.GetEstudantes();
+            AtualizarListBoxEstudantes();
+        }
 
+        private void AtualizarListBoxEstudantes()
+        {
+            listBox_estudante.Items.Clear();
+
+            foreach (Estudante es in listaEstudante)
+            {
+                listBox_estudante.Items.Add(es);
+            }
         }
     }
 }

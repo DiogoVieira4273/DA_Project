@@ -15,7 +15,7 @@ namespace iCantina.Views
 {
     public partial class Formulario_Funcionario : Form
     {
-        private List<Funcionario> listaFuncionario = new List<Funcionario>();
+        private BindingList<Funcionario> listaFuncionario = new BindingList<Funcionario>();
         public CantinaContext db;
         private FuncionarioController funcController;
         public Formulario_Funcionario(CantinaContext db)
@@ -34,12 +34,8 @@ namespace iCantina.Views
                 Funcionario funcionario = this.funcController.AddFuncionario(textBoxNome.Text, int.Parse(textBoxNIF.Text), textBoxUsername.Text);
 
                 listaFuncionario.Add(funcionario);
-                listBoxFuncionarios.Items.Clear();
-                foreach (Funcionario f in listaFuncionario)
-                {
-                    listBoxFuncionarios.Items.Add(f);
-                }
-
+                AtualizarListBoxFuncionarios();
+                
                 MessageBox.Show("Funcionário registrado com sucesso!");
             }
             catch (Exception ex)
@@ -59,6 +55,7 @@ namespace iCantina.Views
                 {
                     funcController.DeleteFuncionario(funcionario.Id);
                     listaFuncionario.Remove(funcionario);
+                    AtualizarListBoxFuncionarios();
                 }
                 else
                 {
@@ -71,7 +68,7 @@ namespace iCantina.Views
             }
         }
 
-        private void button_Guardar_Click(object sender, EventArgs e)
+        private void button_Editar_Click(object sender, EventArgs e)
         {
             try
             {
@@ -83,6 +80,7 @@ namespace iCantina.Views
                     funcionario.NIF = int.Parse(textBoxNIF.Text);
                     funcionario.Username = textBoxUsername.Text;
                     funcController.UpdateFuncionario(funcionario.Id, funcionario.Name, funcionario.NIF, funcionario.Username);
+                    AtualizarListBoxFuncionarios();
                 }
                 else
                 {
@@ -100,20 +98,22 @@ namespace iCantina.Views
             
         }
 
+
         private void ObterFuncionarios()
         {
-            // Limpar o ListBox antes de adicionar os funcionários
+            listaFuncionario = funcController.GetFuncionarios();
+            AtualizarListBoxFuncionarios();
+        }
+
+        private void AtualizarListBoxFuncionarios()
+        {
             listBoxFuncionarios.Items.Clear();
 
-            // Obter os funcionários da base de dados usando o controlador
-            List<Funcionario> funcionarios = funcController.GetFuncionarios();
-
-            // Adicionar os funcionários ao ListBox
-            foreach (Funcionario funcionario in funcionarios)
+            foreach (Funcionario f in listaFuncionario)
             {
-                listBoxFuncionarios.Items.Add(funcionario);
+                listBoxFuncionarios.Items.Add(f);
             }
         }
 
-        }
+    }
 }

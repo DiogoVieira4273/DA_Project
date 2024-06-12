@@ -37,7 +37,7 @@
             this.listBoxFuncionarios = new System.Windows.Forms.ListBox();
             this.button_Registo = new System.Windows.Forms.Button();
             this.button_Apagar = new System.Windows.Forms.Button();
-            this.button_Guardar = new System.Windows.Forms.Button();
+            this.button_Editar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -119,22 +119,22 @@
             this.button_Apagar.UseVisualStyleBackColor = true;
             this.button_Apagar.Click += new System.EventHandler(this.button_Apagar_Click);
             // 
-            // button_Guardar
+            // button_Editar
             // 
-            this.button_Guardar.Location = new System.Drawing.Point(284, 186);
-            this.button_Guardar.Name = "button_Guardar";
-            this.button_Guardar.Size = new System.Drawing.Size(94, 37);
-            this.button_Guardar.TabIndex = 9;
-            this.button_Guardar.Text = "Editar";
-            this.button_Guardar.UseVisualStyleBackColor = true;
-            this.button_Guardar.Click += new System.EventHandler(this.button_Guardar_Click);
+            this.button_Editar.Location = new System.Drawing.Point(284, 186);
+            this.button_Editar.Name = "button_Editar";
+            this.button_Editar.Size = new System.Drawing.Size(94, 37);
+            this.button_Editar.TabIndex = 9;
+            this.button_Editar.Text = "Editar";
+            this.button_Editar.UseVisualStyleBackColor = true;
+            this.button_Editar.Click += new System.EventHandler(this.button_Editar_Click);
             // 
             // Formulario_Funcionario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(662, 290);
-            this.Controls.Add(this.button_Guardar);
+            this.Controls.Add(this.button_Editar);
             this.Controls.Add(this.button_Apagar);
             this.Controls.Add(this.button_Registo);
             this.Controls.Add(this.listBoxFuncionarios);
@@ -162,6 +162,6 @@
         private System.Windows.Forms.ListBox listBoxFuncionarios;
         private System.Windows.Forms.Button button_Registo;
         private System.Windows.Forms.Button button_Apagar;
-        private System.Windows.Forms.Button button_Guardar;
+        private System.Windows.Forms.Button button_Editar;
     }
 }
