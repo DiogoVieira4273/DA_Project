@@ -101,14 +101,15 @@
             this.listBox_extrasdomenu.FormattingEnabled = true;
             this.listBox_extrasdomenu.Location = new System.Drawing.Point(667, 113);
             this.listBox_extrasdomenu.Name = "listBox_extrasdomenu";
+            this.listBox_extrasdomenu.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.listBox_extrasdomenu.Size = new System.Drawing.Size(120, 121);
             this.listBox_extrasdomenu.TabIndex = 6;
             // 
             // botton_criarReserva
             // 
-            this.botton_criarReserva.Location = new System.Drawing.Point(501, 452);
+            this.botton_criarReserva.Location = new System.Drawing.Point(565, 240);
             this.botton_criarReserva.Name = "botton_criarReserva";
-            this.botton_criarReserva.Size = new System.Drawing.Size(193, 35);
+            this.botton_criarReserva.Size = new System.Drawing.Size(193, 26);
             this.botton_criarReserva.TabIndex = 7;
             this.botton_criarReserva.Text = "Criar reserva";
             this.botton_criarReserva.UseVisualStyleBackColor = true;
@@ -117,9 +118,9 @@
             // listBox_reserva
             // 
             this.listBox_reserva.FormattingEnabled = true;
-            this.listBox_reserva.Location = new System.Drawing.Point(700, 275);
+            this.listBox_reserva.Location = new System.Drawing.Point(343, 275);
             this.listBox_reserva.Name = "listBox_reserva";
-            this.listBox_reserva.Size = new System.Drawing.Size(256, 212);
+            this.listBox_reserva.Size = new System.Drawing.Size(613, 212);
             this.listBox_reserva.TabIndex = 8;
             // 
             // labelPrecoClienteSelecionado

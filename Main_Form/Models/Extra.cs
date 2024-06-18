@@ -13,12 +13,8 @@ namespace iCantina.Models
         public string Descricao { get; set; }
         public decimal Preco {  get; set; }
         public bool Ativo { get; set; }
-        public BindingList<Menu> Menus { get; set; } // Many-to-Many relationship
+        public Menu Menu { get; set; }
 
-        public Extra()
-        {
-            Menus = new BindingList<Menu>();
-        }
         public override string ToString()
         {
             return $"{Descricao}, {Preco}€, {Ativo}";

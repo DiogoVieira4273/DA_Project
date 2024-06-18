@@ -17,6 +17,7 @@ namespace iCantina.Views
         private BindingList<Reserva> listaReservas = new BindingList<Reserva>();
         private BindingList<Models.Menu> lista_menu;
         private BindingList<Multa> listaMultas = new BindingList<Multa>();
+        private BindingList<Extra> extrasSelecionados = new BindingList<Extra>();
         private EstudanteController estudanteController;
         private ProfessorController professorController;
         private MenuController menuController;
@@ -38,6 +39,7 @@ namespace iCantina.Views
             ObterEstudante();
             ObterProfessor();
             ObterMultas();
+            ObterReservas();
         }
 
         private void ObterMenus()
@@ -85,20 +87,15 @@ namespace iCantina.Views
             try
             {
                 listaMultas = multaController.GetMultas();
-                AtualizarListBoxMultas();
+                listBox_multas.Items.Clear();
+                foreach (var multa in listaMultas)
+                {
+                    listBox_multas.Items.Add(multa);
+                }
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erro ao obter as multas: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
-        }
-
-        private void AtualizarListBoxMultas()
-        {
-            listBox_multas.Items.Clear();
-            foreach (Multa multa in listaMultas)
-            {
-                listBox_multas.Items.Add(multa);
+                MessageBox.Show($"Erro ao carregar multas: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -123,7 +120,7 @@ namespace iCantina.Views
         {
             if (listBox_menus.SelectedItem is Models.Menu menu)
             {
-                menuSelecionado = menu;
+                menuSelecionado = menu; // Renomear para menuSelecionado (local)
                 AtualizarListBoxPratos(menu);
                 AtualizarListBoxExtras(menu);
             }
@@ -179,14 +176,102 @@ namespace iCantina.Views
                 MessageBox.Show("Selecione no máximo três extras.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+            // Verificar se foi selecionada pelo menos uma multa
+            if (listBox_multas.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Selecione pelo menos uma multa.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
 
             return true;
         }
 
         private void botton_criarReserva_Click(object sender, EventArgs e)
         {
-            
+            try
+            {
+                // Validar a reserva
+                if (!ValidarReserva())
+                {
+                    return;
+                }
+
+                // Obter o cliente selecionado
+                Cliente cliente = null;
+                if (listBox_estudantes.SelectedItems.Count > 0)
+                {
+                    cliente = (Cliente)listBox_estudantes.SelectedItem;
+                }
+                else if (listBox_Professores.SelectedItems.Count > 0)
+                {
+                    cliente = (Cliente)listBox_Professores.SelectedItem;
+                }
+
+                // Obter o prato selecionado
+                Prato pratoSelecionado = (Prato)listBox_pratosdomenu.SelectedItem;
+
+                // Adicionar os extras selecionados à BindingList
+                foreach (var extraSelecionado in listBox_extrasdomenu.SelectedItems)
+                {
+                    Extra extra = (Extra)extraSelecionado;
+                    extrasSelecionados.Add(extra);
+                }
+
+                // Obter o menu selecionado
+                // Models.Menu menuSelecionado = menuController.GetMenuById(menuSelecionado.Id);
+
+                // Obter a multa selecionada
+                Multa multaSelecionada = (Multa)listBox_multas.SelectedItem;
+
+                // Adicionar a reserva
+                Reserva reserva = reservaController.AddReserva(cliente, pratoSelecionado, extrasSelecionados, /*menuSelecionado*/ multaSelecionada);
+
+                // Adicionar a reserva à lista de reservas
+                listaReservas.Add(reserva);
+
+                // Atualizar a listBox_reservas para exibir os dados da reserva
+                AtualizarListBoxReservas();
+
+                
+
+                MessageBox.Show("Reserva criada com sucesso!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao criar reserva: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
-    
+        private void ObterReservas()
+        {
+            try
+            {
+                // Chama o método GetAllReservas do ReservaController
+                BindingList<Reserva> reservas = reservaController.GetReservas();
+
+                // Limpa a lista atual de reservas
+                listaReservas.Clear();
+
+                // Adiciona todas as reservas retornadas à lista de reservas do formulário
+                foreach (var reserva in reservas)
+                {
+                    listaReservas.Add(reserva);
+                }
+
+                // Atualiza a listBox_reserva para exibir os dados das reservas
+                AtualizarListBoxReservas();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao obter reservas: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private void AtualizarListBoxReservas()
+        {
+            listBox_reserva.Items.Clear();
+            foreach (var reserva in listaReservas)
+            {
+                listBox_reserva.Items.Add(reserva);
+            }
+        }
     }
 }

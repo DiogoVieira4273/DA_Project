@@ -17,42 +17,41 @@ namespace iCantina.Views
         private BindingList<Funcionario> listaFuncionario = new BindingList<Funcionario>();
         private CantinaContext db;
         private FuncionarioController funcController;
+        private Funcionario funcionarioSelecionado;
+
         public Formulario_Principal(CantinaContext db)
         {
             this.db = db;
             this.funcController = new FuncionarioController(this.db);
             InitializeComponent();
             ObterFuncionarios();
+            // Inicialmente desabilitar botões até que um funcionário seja selecionado
+            HabilitarBotoes(false);
         }
 
         private void button_FormPratos_Click(object sender, EventArgs e)
         {
-            Formulario_Pratos f_pr = new Formulario_Pratos(db);
-            f_pr.ShowDialog();
+            AbrirFormulario(new Formulario_Pratos(db));
         }
 
         private void button_FormExtras_Click(object sender, EventArgs e)
         {
-            Formulario_Extras f_ex = new Formulario_Extras(db);
-            f_ex.ShowDialog();
+            AbrirFormulario(new Formulario_Extras(db));
         }
 
         private void button_FormMenu_Click(object sender, EventArgs e)
         {
-            Formulario_Menu f_me = new Formulario_Menu(db);
-            f_me.ShowDialog();
+            AbrirFormulario(new Formulario_Menu(db));
         }
 
         private void button_FormMultas_Click(object sender, EventArgs e)
         {
-            Formulario_Multa f_mu = new Formulario_Multa(db);
-            f_mu.ShowDialog();
+            AbrirFormulario(new Formulario_Multa(db));
         }
 
         private void button_FormReservas_Click(object sender, EventArgs e)
         {
-            Formulario_Reserva f_r = new Formulario_Reserva(db);
-            f_r.ShowDialog();
+            AbrirFormulario(new Formulario_Reserva(db));
         }
 
         private void button_FormFuncionarios_Click(object sender, EventArgs e)
@@ -65,38 +64,69 @@ namespace iCantina.Views
 
         private void button_FormEstudantes_Click(object sender, EventArgs e)
         {
-            Formulario_Estudante f_e = new Formulario_Estudante(db);
-            f_e.ShowDialog();
+            AbrirFormulario(new Formulario_Estudante(db));
         }
 
         private void button_FormProfessores_Click(object sender, EventArgs e)
         {
-            Formulario_Professor f_p = new Formulario_Professor(db);
-            f_p.ShowDialog();
+            AbrirFormulario(new Formulario_Professor(db));
         }
 
         private void listBox_ListaFuncionarios_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+            if (listBox_ListaFuncionarios.SelectedItem is Funcionario funcionario)
+            {
+                funcionarioSelecionado = funcionario;
+                // Habilitar botões quando um funcionário é selecionado
+                HabilitarBotoes(true);
+            }
+            else
+            {
+                funcionarioSelecionado = null;
+                // Desabilitar botões se nenhum funcionário estiver selecionado
+                HabilitarBotoes(false);
+            }
         }
 
         private void ObterFuncionarios()
         {
-            
             listBox_ListaFuncionarios.Items.Clear();
-
             BindingList<Funcionario> funcionarios = funcController.GetFuncionarios();
-
-            
             foreach (Funcionario funcionario in funcionarios)
             {
                 listBox_ListaFuncionarios.Items.Add(funcionario);
             }
         }
 
+        private void HabilitarBotoes(bool habilitar)
+        {
+            // Habilitar ou desabilitar todos os botões de acesso aos formulários
+            button_FormPratos.Enabled = habilitar;
+            button_FormExtras.Enabled = habilitar;
+            button_FormMenu.Enabled = habilitar;
+            button_FormMultas.Enabled = habilitar;
+            button_FormReservas.Enabled = habilitar;
+            button_Funcionarios.Enabled = habilitar;
+            button_FormEstudantes.Enabled = habilitar;
+            button_FormProfessores.Enabled = habilitar;
+        }
+
+        private void AbrirFormulario(Form form)
+        {
+            if (funcionarioSelecionado != null)
+            {
+                form.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Selecione um funcionário antes de acessar esta funcionalidade.", "Aviso", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
         private void Formulario_Principal_Load(object sender, EventArgs e)
         {
-
+            // Desabilitar todos os botões iniciais
+            HabilitarBotoes(false);
         }
     }
 }

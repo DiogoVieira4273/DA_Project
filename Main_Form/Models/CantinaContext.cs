@@ -27,5 +27,7 @@ namespace iCantina.Models
         {
             Database.SetInitializer(new CreateDatabaseIfNotExists<CantinaContext>());
         }
+
+        
     }
 }

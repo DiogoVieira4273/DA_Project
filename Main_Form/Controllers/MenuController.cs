@@ -23,6 +23,11 @@ namespace iCantina.Controllers
             return new BindingList<Menu>(listaMenu);
         }
 
+        public Menu GetMenuById(int menuId)
+        {
+            return db.Menus.FirstOrDefault(m => m.Id == menuId);
+        }
+
 
         public Menu AddMenu(DateTime dataHora,decimal precoEstudante, decimal precoProfessor, BindingList<Prato> pratos, BindingList<Extra> extras)
         {

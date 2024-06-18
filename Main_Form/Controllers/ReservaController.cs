@@ -23,9 +23,10 @@ namespace iCantina.Controllers
             return new BindingList<Reserva>(listaReservas);
         }
 
-        public Reserva AddReserva(Cliente cliente, Prato prato, BindingList<Extra> extras, Menu menu, decimal TotalGasto, Multa multa)
+        public Reserva AddReserva(Cliente cliente, Prato prato, BindingList<Extra> extras, /*Menu menu, decimal TotalGasto,*/ Multa multa)
         {
-            var reserva = new Reserva {Cliente = cliente, Prato = prato, Extras = extras, Menu = menu, TotalGasto=TotalGasto,Multa = multa};
+            //var reserva = new Reserva {Cliente = cliente, Prato = prato, Extras = extras, Menu = menu, TotalGasto=TotalGasto,Multa = multa};
+            var reserva = new Reserva { Cliente = cliente, Prato = prato, Extras = extras, Multa = multa };
             db.Reservas.Add(reserva);
             db.SaveChanges();
 

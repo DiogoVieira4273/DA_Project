@@ -14,12 +14,8 @@ namespace iCantina.Models
         public string Descricao { get; set; }
         public string Tipo { get; set; }
         public bool Ativo { get; set; }
-        public BindingList<Menu> Menus { get; set; } // Many-to-Many relationship
+        public Menu Menu { get; set; }
 
-        public Prato()
-        {
-            Menus = new BindingList<Menu>();
-        }
         public override string ToString()
         {
             return $"{Descricao}, {Tipo}, {Ativo}";
