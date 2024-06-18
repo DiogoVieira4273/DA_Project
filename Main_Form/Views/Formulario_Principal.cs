@@ -1,14 +1,8 @@
 ﻿using iCantina.Controllers;
 using iCantina.Models;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
+using System;
 
 namespace iCantina.Views
 {
@@ -25,8 +19,8 @@ namespace iCantina.Views
             this.funcController = new FuncionarioController(this.db);
             InitializeComponent();
             ObterFuncionarios();
-            // Inicialmente desabilitar botões até que um funcionário seja selecionado
-            HabilitarBotoes(false);
+            // Habilita todos os botões iniciais
+            HabilitarBotoes(true);
         }
 
         private void button_FormPratos_Click(object sender, EventArgs e)
@@ -84,7 +78,7 @@ namespace iCantina.Views
             {
                 funcionarioSelecionado = null;
                 // Desabilitar botões se nenhum funcionário estiver selecionado
-                HabilitarBotoes(false);
+                // HabilitarBotoes(false);
             }
         }
 
@@ -100,13 +94,13 @@ namespace iCantina.Views
 
         private void HabilitarBotoes(bool habilitar)
         {
-            // Habilitar ou desabilitar todos os botões de acesso aos formulários
+            // Habilita todos os botões de acesso aos formulários
             button_FormPratos.Enabled = habilitar;
             button_FormExtras.Enabled = habilitar;
             button_FormMenu.Enabled = habilitar;
             button_FormMultas.Enabled = habilitar;
             button_FormReservas.Enabled = habilitar;
-            button_Funcionarios.Enabled = habilitar;
+            button_Funcionarios.Enabled = true; // Sempre habilitado
             button_FormEstudantes.Enabled = habilitar;
             button_FormProfessores.Enabled = habilitar;
         }

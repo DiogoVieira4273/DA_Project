@@ -23,14 +23,20 @@ namespace iCantina.Controllers
             return new BindingList<Reserva>(listaReservas);
         }
 
-        public Reserva AddReserva(Cliente cliente, Prato prato, BindingList<Extra> extras, /*Menu menu, decimal TotalGasto,*/ Multa multa)
+        public Reserva AddReserva(Cliente cliente, Prato prato, BindingList<Extra> extras, decimal TotalGasto, Multa multa)
         {
-            //var reserva = new Reserva {Cliente = cliente, Prato = prato, Extras = extras, Menu = menu, TotalGasto=TotalGasto,Multa = multa};
-            var reserva = new Reserva { Cliente = cliente, Prato = prato, Extras = extras, Multa = multa };
+            var reserva = new Reserva { Cliente = cliente, Prato = prato, Extras = extras, TotalGasto = TotalGasto, Multa = multa };
             db.Reservas.Add(reserva);
             db.SaveChanges();
 
             return reserva;
+        }
+
+        public void RemoveReserva(int id)
+        {
+            var reserva = db.Reservas.Where(r => r.Id == id).FirstOrDefault();
+            db.Reservas.Remove(reserva);
+            db.SaveChanges();
         }
     }
 }

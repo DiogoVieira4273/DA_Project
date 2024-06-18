@@ -13,8 +13,7 @@ namespace iCantina.Models
         public Cliente Cliente { get; set; }
         public Prato Prato { get; set; }
         public BindingList<Extra> Extras { get; set; }
-       // public Menu Menu { get; set; }
-       // public decimal TotalGasto { get; set; }
+        public decimal TotalGasto { get; set; }
         public Multa Multa { get; set; }
 
         public Reserva()
@@ -27,7 +26,7 @@ namespace iCantina.Models
             //return $"Reserva #{Id}, Cliente: {Cliente.Name}, Prato: {Prato.Tipo} Multa: {Multa.Valor}";
             // Formatação básica dos atributos da reserva
             StringBuilder sb = new StringBuilder();
-            sb.Append($"Reserva #{Id}, Cliente: {Cliente.Name}, Prato: {Prato.Descricao},Multa: {Multa.Valor}");
+            sb.Append($"Reserva #{Id}, Cliente: {Cliente.Name}, Prato: {Prato.Descricao},Total Gasto: {TotalGasto:C2}");
 
             // Verifica se há extras selecionados e adiciona seus nomes à string
             if (Extras.Count > 0)

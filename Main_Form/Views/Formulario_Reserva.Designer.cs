@@ -41,6 +41,7 @@
             this.Valor = new System.Windows.Forms.Label();
             this.listBox_multas = new System.Windows.Forms.ListBox();
             this.label_multa = new System.Windows.Forms.Label();
+            this.button_apagar_reserva = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // listBox_estudantes
@@ -160,11 +161,22 @@
             this.label_multa.TabIndex = 12;
             this.label_multa.Text = "Multas:";
             // 
+            // button_apagar_reserva
+            // 
+            this.button_apagar_reserva.Location = new System.Drawing.Point(775, 240);
+            this.button_apagar_reserva.Name = "button_apagar_reserva";
+            this.button_apagar_reserva.Size = new System.Drawing.Size(140, 26);
+            this.button_apagar_reserva.TabIndex = 13;
+            this.button_apagar_reserva.Text = "Apagar Reserva";
+            this.button_apagar_reserva.UseVisualStyleBackColor = true;
+            this.button_apagar_reserva.Click += new System.EventHandler(this.button_apagar_reserva_Click);
+            // 
             // Formulario_Reserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(968, 499);
+            this.Controls.Add(this.button_apagar_reserva);
             this.Controls.Add(this.label_multa);
             this.Controls.Add(this.listBox_multas);
             this.Controls.Add(this.Valor);
@@ -200,5 +212,6 @@
         private System.Windows.Forms.Label Valor;
         private System.Windows.Forms.ListBox listBox_multas;
         private System.Windows.Forms.Label label_multa;
+        private System.Windows.Forms.Button button_apagar_reserva;
     }
 }

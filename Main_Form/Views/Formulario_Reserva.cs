@@ -223,16 +223,18 @@ namespace iCantina.Views
                 // Obter a multa selecionada
                 Multa multaSelecionada = (Multa)listBox_multas.SelectedItem;
 
-                // Adicionar a reserva
-                Reserva reserva = reservaController.AddReserva(cliente, pratoSelecionado, extrasSelecionados, /*menuSelecionado*/ multaSelecionada);
+                // Calcula o total gasto com base no cliente, prato selecionado, extras e multa
+                decimal totalGasto = CalcularTotalGasto(cliente, pratoSelecionado, extrasSelecionados, multaSelecionada);
+
+                // Adicionar a reserva usando o método do ReservaController
+                Reserva reserva = reservaController.AddReserva(cliente, pratoSelecionado, extrasSelecionados, totalGasto,multaSelecionada);
+                reserva.TotalGasto = totalGasto; // Atribui o total gasto calculado à reserva
 
                 // Adicionar a reserva à lista de reservas
                 listaReservas.Add(reserva);
 
-                // Atualizar a listBox_reservas para exibir os dados da reserva
+                // Atualiza a listBox_reserva para exibir os dados da reserva
                 AtualizarListBoxReservas();
-
-                
 
                 MessageBox.Show("Reserva criada com sucesso!");
             }
@@ -271,6 +273,75 @@ namespace iCantina.Views
             foreach (var reserva in listaReservas)
             {
                 listBox_reserva.Items.Add(reserva);
+            }
+        }
+
+        private decimal CalcularTotalGasto(Cliente cliente, Prato prato, BindingList<Extra> extras, Multa multa)
+        {
+            decimal totalGasto = 0;
+
+            // Adiciona o preço do prato com base no tipo de cliente (estudante ou professor)
+            if (cliente is Estudante)
+            {
+                totalGasto += prato.Menu.PrecoEstudante;
+            }
+            else if (cliente is Professor)
+            {
+                totalGasto += prato.Menu.PrecoProfessor;
+            }
+
+            // Adiciona o preço de cada extra com base no tipo de cliente (estudante ou professor)
+            foreach (var extra in extras)
+            {
+                if (cliente is Estudante)
+                {
+                    totalGasto += extra.Preco;
+                }
+                else if (cliente is Professor)
+                {
+                    totalGasto += extra.Preco;
+                }
+            }
+
+            // Verificar a hora atual e a hora limite para aplicação da multa
+            DateTime horaAtual = DateTime.Now;
+            DateTime horaLimiteMulta = prato.Menu.DataHora.AddHours(-multa.NumHoras);
+
+            // Se estiver dentro do tempo limite para aplicar a multa
+            if (horaAtual > horaLimiteMulta)
+            {
+                // Adiciona o valor da multa ao totalGasto
+                totalGasto += multa.Valor;
+            }
+
+            return totalGasto;
+        }
+
+        private void button_apagar_reserva_Click(object sender, EventArgs e)
+        {
+            if (listBox_reserva.SelectedItem is Reserva reserva)
+            {
+                try
+                {
+                    // Chama o método RemoveReserva do ReservaController
+                    reservaController.RemoveReserva(reserva.Id);
+
+                    // Remove a reserva da lista de reservas do formulário
+                    listaReservas.Remove(reserva);
+
+                    // Atualiza a listBox_reserva para exibir os dados das reservas
+                    AtualizarListBoxReservas();
+
+                    MessageBox.Show("Reserva apagada com sucesso!");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erro ao apagar reserva: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecione uma reserva para apagar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }
