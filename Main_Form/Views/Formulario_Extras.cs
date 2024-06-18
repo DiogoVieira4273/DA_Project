@@ -22,6 +22,7 @@ namespace iCantina.Views
             this.db = db;
             this.extraController = new ExtraController(this.db);
             InitializeComponent();
+            ObterExtras();
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
@@ -43,12 +44,7 @@ namespace iCantina.Views
                 Extra extra = this.extraController.AddExtra(textBox_descricaoExtra.Text, decimal.Parse(textBox_precoExtra.Text), checkBox1.Checked);
 
                 listaExtras.Add(extra);
-                listBox_Extras.Items.Clear();
-                foreach (Extra ex in listaExtras)
-                {
-                    listBox_Extras.Items.Add(ex);
-                    listBox_Extras.DataSource = extra;
-                }
+                AtualizarListBoxExtras();
 
                 MessageBox.Show("Extra registado com sucesso!");
             }
@@ -70,6 +66,7 @@ namespace iCantina.Views
                     extra.Preco = decimal.Parse(textBox_precoExtra.Text);
                     extra.Ativo = checkBox1.Checked;
                     extraController.UpdateExtra(extra.ID, extra.Descricao, extra.Preco, extra.Ativo);
+                    AtualizarListBoxExtras();
                 }
                 else
                 {
@@ -92,6 +89,7 @@ namespace iCantina.Views
                 {
                     extraController.DeleteExtra(extra.ID);
                     listaExtras.Remove(extra);
+                    AtualizarListBoxExtras();
                 }
                 else
                 {
@@ -101,6 +99,22 @@ namespace iCantina.Views
             catch (Exception ex)
             {
                 MessageBox.Show($"{ex.Message}", "", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ObterExtras()
+        {
+            listaExtras = extraController.GetExtras();
+            AtualizarListBoxExtras();
+        }
+
+        private void AtualizarListBoxExtras()
+        {
+            listBox_Extras.Items.Clear();
+
+            foreach (Extra ex in listaExtras)
+            {
+                listBox_Extras.Items.Add(ex);
             }
         }
     }

@@ -23,23 +23,22 @@ namespace iCantina.Views
             this.db = db;
             this.multaController = new MultaController(this.db);
             InitializeComponent();
+            ObterMultas();
         }
 
         private void button_registarMulta_Click(object sender, EventArgs e)
         {
             try
             {
-                Multa multa = this.multaController.AddMulta(decimal.Parse(textBox_horasMulta.Text), int.Parse(textBox_horasMulta.Text));
+                decimal valor = decimal.Parse(textBox_valorMulta.Text);
+                int numHoras = int.Parse(textBox_horasMulta.Text);
+
+                Multa multa = this.multaController.AddMulta(valor, numHoras);
 
                 listaMulta.Add(multa);
-                listBox_Multas.Items.Clear();
-                foreach (Multa mu in listaMulta)
-                {
-                    listBox_Multas.Items.Add(mu);
-                    listBox_Multas.DataSource = multa;
-                }
+                AtualizarListBoxMultas();
 
-                MessageBox.Show("Multa registado com sucesso!");
+                MessageBox.Show("Multa registrada com sucesso!");
             }
             catch (Exception ex)
             {
@@ -58,6 +57,8 @@ namespace iCantina.Views
                     multa.Valor = decimal.Parse(textBox_valorMulta.Text);
                     multa.NumHoras = int.Parse(textBox_horasMulta.Text);
                     multaController.UpdateMulta(multa.ID, multa.Valor, multa.NumHoras);
+
+                    AtualizarListBoxMultas();
                 }
                 else
                 {
@@ -80,6 +81,8 @@ namespace iCantina.Views
                 {
                     multaController.DeleteMulta(multa.ID);
                     listaMulta.Remove(multa);
+
+                    AtualizarListBoxMultas();
                 }
                 else
                 {
@@ -92,9 +95,26 @@ namespace iCantina.Views
             }
         }
 
-        private void Formulario_Multa_Load(object sender, EventArgs e)
+        private void AtualizarListBoxMultas()
         {
+            listBox_Multas.Items.Clear();
+            foreach (Multa mu in listaMulta)
+            {
+                listBox_Multas.Items.Add(mu);
+            }
+        }
 
+        private void ObterMultas()
+        {
+            try
+            {
+                listaMulta = new BindingList<Multa>(multaController.GetMultas().ToList());
+                AtualizarListBoxMultas();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao obter as multas: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

@@ -12,10 +12,9 @@ namespace iCantina.Models
         public decimal Valor { get; set; }
         public int NumHoras { get; set; }
 
-        public Multa(decimal valor, int numHoras)
+        public override string ToString()
         {
-            Valor = valor;
-            NumHoras = numHoras;
+            return $"Valor: {Valor:C2}, Número de Horas: {NumHoras}";
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using iCantina.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,26 +18,36 @@ namespace iCantina.Controllers
             this.db = db;
         }
 
-        public List<Extra> GetExtras()
+        public BindingList<Extra> GetExtras()
         {
-            return db.Extras.ToList();
+            var listaExtra = db.Extras.ToList();
+            return new BindingList<Extra>(listaExtra);
         }
 
-        public bool VerificarExtra(string descricao)
+        public BindingList<Extra> GetExtrasAtivos()
         {
-            descricao = descricao.ToLower();
-            return db.Extras.Any(p => p.Descricao == descricao);
+            var listaExtraAtivo = db.Extras.Where(p => p.Ativo).ToList();
+            return new BindingList<Extra>(listaExtraAtivo);
+        }
 
+        public void ValidarExtra(string descricao, decimal preco)
+        {
+            if (string.IsNullOrWhiteSpace(descricao))
+            {
+                throw new ArgumentException("A descrição não pode estar vazia ou ser nula.");
+            }
+
+            if (preco <= 0)
+            {
+                throw new ArgumentException("O preço deve ser maior que zero.");
+            }
         }
 
         public Extra AddExtra(string descricao, decimal preco, bool ativo)
         {
-            if (VerificarExtra(descricao))
-            {
-                throw new Exception("Esse Extra já foi criado!");
-            }
+            ValidarExtra(descricao, preco);
 
-            var extra = new Extra(descricao, preco, ativo);
+            var extra = new Extra { Descricao = descricao, Preco = preco, Ativo = ativo };
             db.Extras.Add(extra);
             db.SaveChanges();
 
@@ -46,10 +57,7 @@ namespace iCantina.Controllers
 
         public void UpdateExtra(int id, string descricao, decimal preco, bool ativo)
         {
-            if (VerificarExtra(descricao))
-            {
-                throw new Exception("Esse Extra já foi criado!");
-            }
+            ValidarExtra(descricao, preco);
 
             var extra = db.Extras.Where(ex => ex.ID == id).FirstOrDefault();
             extra.Descricao = descricao;

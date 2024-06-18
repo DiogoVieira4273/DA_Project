@@ -25,6 +25,12 @@ namespace iCantina.Controllers
             return new BindingList<Prato>(listaPrato);
         }
 
+        public BindingList<Prato> GetPratosAtivos()
+        {
+            var listaPratoAtivo = db.Pratos.Where(p => p.Ativo).ToList();
+            return new BindingList<Prato>(listaPratoAtivo);
+        }
+
         public bool VerificarPrato(string tipo)
         {
             tipo = tipo.ToLower();

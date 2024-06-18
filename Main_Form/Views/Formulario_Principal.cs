@@ -39,7 +39,7 @@ namespace iCantina.Views
 
         private void button_FormMenu_Click(object sender, EventArgs e)
         {
-            Formulario_Menu f_me = new Formulario_Menu();
+            Formulario_Menu f_me = new Formulario_Menu(db);
             f_me.ShowDialog();
         }
 

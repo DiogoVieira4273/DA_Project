@@ -1,6 +1,7 @@
 ﻿using iCantina.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,14 +17,15 @@ namespace iCantina.Controllers
             this.db = db;
         }
 
-        public List<Reserva> GetReservas()
+        public BindingList<Reserva> GetReservas()
         {
-            return db.Reservas.ToList();
+            var listaReservas = db.Reservas.ToList();
+            return new BindingList<Reserva>(listaReservas);
         }
 
-        public Reserva AddReserva(Cliente cliente, Prato prato, List<Extra> extras, Menu menu, Multa multa)
+        public Reserva AddReserva(Cliente cliente, Prato prato, BindingList<Extra> extras, Menu menu, decimal TotalGasto, Multa multa)
         {
-            var reserva = new Reserva {Cliente = cliente, Prato = prato, Extra = extras, Menu = menu, Multa = multa};
+            var reserva = new Reserva {Cliente = cliente, Prato = prato, Extras = extras, Menu = menu, TotalGasto=TotalGasto,Multa = multa};
             db.Reservas.Add(reserva);
             db.SaveChanges();
 

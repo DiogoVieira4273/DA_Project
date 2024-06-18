@@ -1,6 +1,7 @@
 ﻿using iCantina.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,44 +17,20 @@ namespace iCantina.Controllers
             this.db = db;
         }
 
-        public List<Menu> GetMenus()
+        public BindingList<Menu> GetMenus()
         {
-            return db.Menus.ToList();
+            var listaMenu = db.Menus.ToList();
+            return new BindingList<Menu>(listaMenu);
         }
 
-        public bool VerificarMenu(int quantidadeDisponivel)
-        {
-            return db.Menus.Any(m => m.QuantidadeDisponivel == quantidadeDisponivel);
-        }
 
-        public Menu AddMenu(DateTime dataHora, int quantidadeDisponivel, decimal precoEstudante, decimal precoProfessor)
+        public Menu AddMenu(DateTime dataHora,decimal precoEstudante, decimal precoProfessor, BindingList<Prato> pratos, BindingList<Extra> extras)
         {
-            if (VerificarMenu(quantidadeDisponivel))
-            {
-                throw new Exception("Esse menu já foi criado!");
-            }
-
-            var menu = new Menu(dataHora, quantidadeDisponivel, precoEstudante, precoProfessor);
+            var menu = new Menu { DataHora = dataHora, PrecoEstudante = precoEstudante, PrecoProfessor = precoProfessor, Pratos = pratos, Extras = extras };
             db.Menus.Add(menu);
             db.SaveChanges();
 
             return menu;
-
-        }
-
-        public void UpdateMenu(int id, DateTime dataHora, int quantidadeDisponivel, decimal precoEstudante, decimal precoProfessor)
-        {
-            if (VerificarMenu(quantidadeDisponivel))
-            {
-                throw new Exception("Esse menu já foi criado!");
-            }
-
-            var menu = db.Menus.Where(m => m.Id == id).FirstOrDefault();
-            menu.DataHora = dataHora;
-            menu.QuantidadeDisponivel = quantidadeDisponivel;
-            menu.PrecoEstudante = precoEstudante;
-            menu.PrecoProfessor = precoProfessor;
-            db.SaveChanges();
 
         }
 

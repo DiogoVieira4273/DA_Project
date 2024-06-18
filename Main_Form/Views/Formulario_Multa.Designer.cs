@@ -125,7 +125,6 @@
             this.Controls.Add(this.label1);
             this.Name = "Formulario_Multa";
             this.Text = "Formulario_Multa";
-            this.Load += new System.EventHandler(this.Formulario_Multa_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
