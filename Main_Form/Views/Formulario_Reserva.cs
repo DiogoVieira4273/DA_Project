@@ -186,7 +186,7 @@ namespace iCantina.Views
             return true;
         }
 
-        private void botton_criarReserva_Click(object sender, EventArgs e)
+        private void button_criarReserva_Click(object sender, EventArgs e)
         {
             try
             {
@@ -227,7 +227,7 @@ namespace iCantina.Views
                 decimal totalGasto = CalcularTotalGasto(cliente, pratoSelecionado, extrasSelecionados, multaSelecionada);
 
                 // Adicionar a reserva usando o método do ReservaController
-                Reserva reserva = reservaController.AddReserva(cliente, pratoSelecionado, extrasSelecionados, totalGasto,multaSelecionada);
+                Reserva reserva = reservaController.AddReserva(cliente, pratoSelecionado, extrasSelecionados, totalGasto, multaSelecionada);
                 reserva.TotalGasto = totalGasto; // Atribui o total gasto calculado à reserva
 
                 // Adicionar a reserva à lista de reservas
@@ -342,6 +342,49 @@ namespace iCantina.Views
             else
             {
                 MessageBox.Show("Selecione uma reserva para apagar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void button_marcarReserva_Click(object sender, EventArgs e)
+        {
+            if (listBox_reserva.SelectedItem is Reserva reserva)
+            {
+                try
+                {
+                    // Obter o cliente associado à reserva
+                    Cliente cliente = reserva.Cliente;
+
+                    // Verificar se o saldo do cliente é suficiente para cobrir o total gasto
+                    if (cliente.Saldo >= reserva.TotalGasto)
+                    {
+                        // Subtrair o total gasto do saldo do cliente
+                        cliente.Saldo -= reserva.TotalGasto;
+
+                        // Atualizar o saldo do cliente no banco de dados
+                        if (cliente is Estudante)
+                        {
+                            estudanteController.UpdateEstudante((Estudante)cliente);
+                        }
+                        else if (cliente is Professor)
+                        {
+                            professorController.UpdateProfessor((Professor)cliente);
+                        }
+
+                        MessageBox.Show("Reserva marcada com sucesso e saldo atualizado!");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Saldo insuficiente para marcar a reserva.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Erro ao marcar reserva: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Selecione uma reserva para marcar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

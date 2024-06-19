@@ -35,13 +35,13 @@
             this.menus = new System.Windows.Forms.Label();
             this.listBox_pratosdomenu = new System.Windows.Forms.ListBox();
             this.listBox_extrasdomenu = new System.Windows.Forms.ListBox();
-            this.botton_criarReserva = new System.Windows.Forms.Button();
+            this.button_criarReserva = new System.Windows.Forms.Button();
             this.listBox_reserva = new System.Windows.Forms.ListBox();
-            this.labelPrecoClienteSelecionado = new System.Windows.Forms.Label();
-            this.Valor = new System.Windows.Forms.Label();
             this.listBox_multas = new System.Windows.Forms.ListBox();
             this.label_multa = new System.Windows.Forms.Label();
             this.button_apagar_reserva = new System.Windows.Forms.Button();
+            this.button_marcarReserva = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBox_estudantes
@@ -106,42 +106,23 @@
             this.listBox_extrasdomenu.Size = new System.Drawing.Size(120, 121);
             this.listBox_extrasdomenu.TabIndex = 6;
             // 
-            // botton_criarReserva
+            // button_criarReserva
             // 
-            this.botton_criarReserva.Location = new System.Drawing.Point(565, 240);
-            this.botton_criarReserva.Name = "botton_criarReserva";
-            this.botton_criarReserva.Size = new System.Drawing.Size(193, 26);
-            this.botton_criarReserva.TabIndex = 7;
-            this.botton_criarReserva.Text = "Criar reserva";
-            this.botton_criarReserva.UseVisualStyleBackColor = true;
-            this.botton_criarReserva.Click += new System.EventHandler(this.botton_criarReserva_Click);
+            this.button_criarReserva.Location = new System.Drawing.Point(415, 475);
+            this.button_criarReserva.Name = "button_criarReserva";
+            this.button_criarReserva.Size = new System.Drawing.Size(140, 26);
+            this.button_criarReserva.TabIndex = 7;
+            this.button_criarReserva.Text = "Criar reserva";
+            this.button_criarReserva.UseVisualStyleBackColor = true;
+            this.button_criarReserva.Click += new System.EventHandler(this.button_criarReserva_Click);
             // 
             // listBox_reserva
             // 
             this.listBox_reserva.FormattingEnabled = true;
-            this.listBox_reserva.Location = new System.Drawing.Point(343, 275);
+            this.listBox_reserva.Location = new System.Drawing.Point(354, 257);
             this.listBox_reserva.Name = "listBox_reserva";
             this.listBox_reserva.Size = new System.Drawing.Size(613, 212);
             this.listBox_reserva.TabIndex = 8;
-            // 
-            // labelPrecoClienteSelecionado
-            // 
-            this.labelPrecoClienteSelecionado.AutoSize = true;
-            this.labelPrecoClienteSelecionado.Location = new System.Drawing.Point(900, 113);
-            this.labelPrecoClienteSelecionado.Name = "labelPrecoClienteSelecionado";
-            this.labelPrecoClienteSelecionado.Size = new System.Drawing.Size(35, 13);
-            this.labelPrecoClienteSelecionado.TabIndex = 9;
-            this.labelPrecoClienteSelecionado.Text = "label1";
-            // 
-            // Valor
-            // 
-            this.Valor.AutoSize = true;
-            this.Valor.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Valor.Location = new System.Drawing.Point(850, 113);
-            this.Valor.Name = "Valor";
-            this.Valor.Size = new System.Drawing.Size(44, 13);
-            this.Valor.TabIndex = 10;
-            this.Valor.Text = "Preco:";
             // 
             // listBox_multas
             // 
@@ -163,7 +144,7 @@
             // 
             // button_apagar_reserva
             // 
-            this.button_apagar_reserva.Location = new System.Drawing.Point(775, 240);
+            this.button_apagar_reserva.Location = new System.Drawing.Point(595, 475);
             this.button_apagar_reserva.Name = "button_apagar_reserva";
             this.button_apagar_reserva.Size = new System.Drawing.Size(140, 26);
             this.button_apagar_reserva.TabIndex = 13;
@@ -171,18 +152,38 @@
             this.button_apagar_reserva.UseVisualStyleBackColor = true;
             this.button_apagar_reserva.Click += new System.EventHandler(this.button_apagar_reserva_Click);
             // 
+            // button_marcarReserva
+            // 
+            this.button_marcarReserva.Location = new System.Drawing.Point(773, 475);
+            this.button_marcarReserva.Name = "button_marcarReserva";
+            this.button_marcarReserva.Size = new System.Drawing.Size(140, 26);
+            this.button_marcarReserva.TabIndex = 14;
+            this.button_marcarReserva.Text = "Marcar Reserva";
+            this.button_marcarReserva.UseVisualStyleBackColor = true;
+            this.button_marcarReserva.Click += new System.EventHandler(this.button_marcarReserva_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(632, 241);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(64, 13);
+            this.label1.TabIndex = 15;
+            this.label1.Text = "Reservas:";
+            // 
             // Formulario_Reserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(968, 499);
+            this.ClientSize = new System.Drawing.Size(983, 505);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.button_marcarReserva);
             this.Controls.Add(this.button_apagar_reserva);
             this.Controls.Add(this.label_multa);
             this.Controls.Add(this.listBox_multas);
-            this.Controls.Add(this.Valor);
-            this.Controls.Add(this.labelPrecoClienteSelecionado);
             this.Controls.Add(this.listBox_reserva);
-            this.Controls.Add(this.botton_criarReserva);
+            this.Controls.Add(this.button_criarReserva);
             this.Controls.Add(this.listBox_extrasdomenu);
             this.Controls.Add(this.listBox_pratosdomenu);
             this.Controls.Add(this.menus);
@@ -206,12 +207,12 @@
         private System.Windows.Forms.Label menus;
         private System.Windows.Forms.ListBox listBox_pratosdomenu;
         private System.Windows.Forms.ListBox listBox_extrasdomenu;
-        private System.Windows.Forms.Button botton_criarReserva;
+        private System.Windows.Forms.Button button_criarReserva;
         private System.Windows.Forms.ListBox listBox_reserva;
-        private System.Windows.Forms.Label labelPrecoClienteSelecionado;
-        private System.Windows.Forms.Label Valor;
         private System.Windows.Forms.ListBox listBox_multas;
         private System.Windows.Forms.Label label_multa;
         private System.Windows.Forms.Button button_apagar_reserva;
+        private System.Windows.Forms.Button button_marcarReserva;
+        private System.Windows.Forms.Label label1;
     }
 }

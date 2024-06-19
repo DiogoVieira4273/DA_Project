@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -80,6 +81,12 @@ namespace iCantina.Controllers
 
             return true;
 
+        }
+
+        public void UpdateEstudante(Estudante estudante)
+        {
+            db.Entry(estudante).State = EntityState.Modified;
+            db.SaveChanges();
         }
     }
 }

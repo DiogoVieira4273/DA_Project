@@ -26,7 +26,7 @@ namespace iCantina.Controllers
 
         public BindingList<Extra> GetExtrasAtivos()
         {
-            var listaExtraAtivo = db.Extras.Where(p => p.Ativo).ToList();
+            var listaExtraAtivo = db.Extras.Where(ex => ex.Ativo).ToList();
             return new BindingList<Extra>(listaExtraAtivo);
         }
 
@@ -69,7 +69,7 @@ namespace iCantina.Controllers
 
         public void DeleteExtra(int id)
         {
-            var extra = db.Extras.Where(p => p.ID == id).FirstOrDefault();
+            var extra = db.Extras.Where(ex => ex.ID == id).FirstOrDefault();
             db.Extras.Remove(extra);
             db.SaveChanges();
         }
