@@ -30,7 +30,7 @@
         {
             this.listBox_estudantes = new System.Windows.Forms.ListBox();
             this.listBox_Professores = new System.Windows.Forms.ListBox();
-            this.clientes = new System.Windows.Forms.Label();
+            this.estudantes = new System.Windows.Forms.Label();
             this.listBox_menus = new System.Windows.Forms.ListBox();
             this.menus = new System.Windows.Forms.Label();
             this.listBox_pratosdomenu = new System.Windows.Forms.ListBox();
@@ -42,12 +42,14 @@
             this.button_apagar_reserva = new System.Windows.Forms.Button();
             this.button_marcarReserva = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.clientes = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // listBox_estudantes
             // 
             this.listBox_estudantes.FormattingEnabled = true;
-            this.listBox_estudantes.Location = new System.Drawing.Point(3, 25);
+            this.listBox_estudantes.Location = new System.Drawing.Point(3, 37);
             this.listBox_estudantes.Name = "listBox_estudantes";
             this.listBox_estudantes.Size = new System.Drawing.Size(185, 212);
             this.listBox_estudantes.TabIndex = 0;
@@ -55,20 +57,20 @@
             // listBox_Professores
             // 
             this.listBox_Professores.FormattingEnabled = true;
-            this.listBox_Professores.Location = new System.Drawing.Point(194, 25);
+            this.listBox_Professores.Location = new System.Drawing.Point(194, 37);
             this.listBox_Professores.Name = "listBox_Professores";
             this.listBox_Professores.Size = new System.Drawing.Size(185, 212);
             this.listBox_Professores.TabIndex = 1;
             // 
-            // clientes
+            // estudantes
             // 
-            this.clientes.AutoSize = true;
-            this.clientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.clientes.Location = new System.Drawing.Point(166, 9);
-            this.clientes.Name = "clientes";
-            this.clientes.Size = new System.Drawing.Size(52, 13);
-            this.clientes.TabIndex = 2;
-            this.clientes.Text = "Clientes";
+            this.estudantes.AutoSize = true;
+            this.estudantes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.estudantes.Location = new System.Drawing.Point(55, 21);
+            this.estudantes.Name = "estudantes";
+            this.estudantes.Size = new System.Drawing.Size(70, 13);
+            this.estudantes.TabIndex = 2;
+            this.estudantes.Text = "Estudantes";
             // 
             // listBox_menus
             // 
@@ -172,11 +174,33 @@
             this.label1.TabIndex = 15;
             this.label1.Text = "Reservas:";
             // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(230, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(73, 13);
+            this.label2.TabIndex = 16;
+            this.label2.Text = "Professores";
+            // 
+            // clientes
+            // 
+            this.clientes.AutoSize = true;
+            this.clientes.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.clientes.Location = new System.Drawing.Point(159, 4);
+            this.clientes.Name = "clientes";
+            this.clientes.Size = new System.Drawing.Size(52, 13);
+            this.clientes.TabIndex = 17;
+            this.clientes.Text = "Clientes";
+            // 
             // Formulario_Reserva
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(983, 505);
+            this.Controls.Add(this.clientes);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button_marcarReserva);
             this.Controls.Add(this.button_apagar_reserva);
@@ -188,7 +212,7 @@
             this.Controls.Add(this.listBox_pratosdomenu);
             this.Controls.Add(this.menus);
             this.Controls.Add(this.listBox_menus);
-            this.Controls.Add(this.clientes);
+            this.Controls.Add(this.estudantes);
             this.Controls.Add(this.listBox_Professores);
             this.Controls.Add(this.listBox_estudantes);
             this.Name = "Formulario_Reserva";
@@ -202,7 +226,7 @@
 
         private System.Windows.Forms.ListBox listBox_estudantes;
         private System.Windows.Forms.ListBox listBox_Professores;
-        private System.Windows.Forms.Label clientes;
+        private System.Windows.Forms.Label estudantes;
         private System.Windows.Forms.ListBox listBox_menus;
         private System.Windows.Forms.Label menus;
         private System.Windows.Forms.ListBox listBox_pratosdomenu;
@@ -214,5 +238,7 @@
         private System.Windows.Forms.Button button_apagar_reserva;
         private System.Windows.Forms.Button button_marcarReserva;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label clientes;
     }
 }
