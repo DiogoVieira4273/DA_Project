@@ -22,6 +22,8 @@ namespace iCantina.Models
         public DbSet<Fatura> Faturas { get; set; }
         public DbSet<ItemFatura> ItemFaturas { get; set; }
         public DbSet<Reserva> Reservas { get; set; }
+        public DbSet<QuantidadePrato> QuantidadePratos { get; set; }
+        public DbSet<QuantidadeExtra> QuantidadeExtras { get; set; }
 
         public CantinaContext() : base("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=iCantinaDB")
         {

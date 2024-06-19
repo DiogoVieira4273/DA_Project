@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,6 +21,16 @@ namespace iCantina
             Application.SetCompatibleTextRenderingDefault(false);
             using (var db = new CantinaContext())
             {
+                db.QuantidadePratos.Load();
+                db.QuantidadeExtras.Load();
+                db.Utilizadores.Load();
+                db.Extras.Load();
+                db.Menus.Load();
+                db.Multas.Load();
+                db.Faturas.Load();
+                db.ItemFaturas.Load();
+                db.Pratos.Load();
+                db.Reservas.Load();
                 Application.Run(new Formulario_Principal(db));
             }
         }
