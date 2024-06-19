@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -379,6 +380,9 @@ namespace iCantina.Views
                             professorController.UpdateProfessor((Professor)clienteSelecionado);
                         }
 
+                        // Gerar o arquivo de texto com as informações da reserva
+                        GerarArquivoTexto(reserva);
+
                         MessageBox.Show("Reserva marcada com sucesso e saldo atualizado!");
                     }
                     else
@@ -395,13 +399,47 @@ namespace iCantina.Views
             {
                 MessageBox.Show("Selecione uma reserva para marcar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
 
+        private void GerarArquivoTexto(Reserva reserva)
+        {
+            // Construir o conteúdo do arquivo de texto com base nos dados da reserva
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine($"ID da Reserva: {reserva.Id}");
+            //sb.AppendLine($"Data da Reserva: {reserva.DataReserva}");
+            sb.AppendLine($"Cliente: {reserva.Cliente.Name}");
+            sb.AppendLine($"Prato Selecionado: {reserva.Prato.Descricao}");
+            sb.AppendLine("Extras Selecionados:");
+            foreach (var extra in reserva.Extras)
+            {
+                sb.AppendLine($"- {extra.Descricao}");
+            }
+            sb.AppendLine($"Total Gasto: {reserva.TotalGasto:C2}");
+
+            // Obter o diretório de execução do aplicativo
+            string diretorioExecucao = Application.StartupPath;
+
+            // Definir o caminho do arquivo dentro da pasta bin
+            string path = Path.Combine(diretorioExecucao, "Reserva.txt");
+            // Salvar o conteúdo no arquivo de texto
+            try
+            {
+                using (StreamWriter sw = new StreamWriter(path))
+                {
+                    sw.Write(sb.ToString());
+                }
+
+                MessageBox.Show($"Arquivo de texto criado com sucesso em: {path}", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erro ao salvar arquivo de texto: {ex.Message}", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private Cliente ObterClienteSelecionado()
         {
             // Implemente lógica para obter o cliente selecionado por um funcionário ou usuário administrativo
-            // Exemplo:
             if (listBox_estudantes.SelectedItems.Count > 0)
             {
                 return (Cliente)listBox_estudantes.SelectedItem;

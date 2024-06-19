@@ -12,6 +12,8 @@ namespace iCantina.Models
         public int Id { get; set; }
         public Cliente Cliente { get; set; }
         public Prato Prato { get; set; }
+
+        //public Menu menu { get; set; }
         public BindingList<Extra> Extras { get; set; }
         public decimal TotalGasto { get; set; }
         public Multa Multa { get; set; }
