@@ -17,7 +17,8 @@ Primeiro, precisa de clonar o repositório do projeto para o seu computador. Abr
 git clone https://github.com/DiogoVieira4273/DA_Project.git
 ```
 ## Elementos do grupo
-2220872 Diogo Major Vieira
-2223354 Pedro da Silva Agostinho
-2220862 Rúben Rosa Lisboa
+* 2220872 Diogo Major Vieira
+* 2223354 Pedro da Silva Agostinho
+* 2220862 Rúben Rosa Lisboa
+
 
