@@ -1,6 +1,7 @@
 ﻿using iCantina.Models;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,9 +16,10 @@ namespace iCantina.Controllers
             this.db = db;
         }
 
-        public List<ItemFatura> GetItemFaturas()
+        public BindingList<ItemFatura> GetItemFaturas()
         {
-            return db.ItemFaturas.ToList();
+            var itemFaturas = db.ItemFaturas.ToList();
+            return new BindingList<ItemFatura>(itemFaturas);
         }
 
         public ItemFatura AddItemFatura(string descricao, decimal preco)

@@ -196,38 +196,34 @@ namespace iCantina.Views
                     return;
                 }
 
-                // Obter o cliente selecionado
-                Cliente cliente = null;
-                if (listBox_estudantes.SelectedItems.Count > 0)
+                // Verificar se foi selecionado um cliente
+                Cliente clienteSelecionado = ObterClienteSelecionado(); // Implemente essa função para obter o cliente selecionado
+
+                if (clienteSelecionado == null)
                 {
-                    cliente = (Cliente)listBox_estudantes.SelectedItem;
-                }
-                else if (listBox_Professores.SelectedItems.Count > 0)
-                {
-                    cliente = (Cliente)listBox_Professores.SelectedItem;
+                    MessageBox.Show("Selecione um cliente para criar a reserva.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
                 }
 
                 // Obter o prato selecionado
                 Prato pratoSelecionado = (Prato)listBox_pratosdomenu.SelectedItem;
 
                 // Adicionar os extras selecionados à BindingList
+                BindingList<Extra> extrasSelecionados = new BindingList<Extra>();
                 foreach (var extraSelecionado in listBox_extrasdomenu.SelectedItems)
                 {
                     Extra extra = (Extra)extraSelecionado;
                     extrasSelecionados.Add(extra);
                 }
 
-                // Obter o menu selecionado
-                // Models.Menu menuSelecionado = menuController.GetMenuById(menuSelecionado.Id);
-
                 // Obter a multa selecionada
                 Multa multaSelecionada = (Multa)listBox_multas.SelectedItem;
 
-                // Calcula o total gasto com base no cliente, prato selecionado, extras e multa
-                decimal totalGasto = CalcularTotalGasto(cliente, pratoSelecionado, extrasSelecionados, multaSelecionada);
+                // Calcular o total gasto com base no cliente, prato selecionado, extras e multa
+                decimal totalGasto = CalcularTotalGasto(clienteSelecionado, pratoSelecionado, extrasSelecionados, multaSelecionada);
 
                 // Adicionar a reserva usando o método do ReservaController
-                Reserva reserva = reservaController.AddReserva(cliente, pratoSelecionado, extrasSelecionados, totalGasto, multaSelecionada);
+                Reserva reserva = reservaController.AddReserva(clienteSelecionado, pratoSelecionado, extrasSelecionados, totalGasto, multaSelecionada);
                 reserva.TotalGasto = totalGasto; // Atribui o total gasto calculado à reserva
 
                 // Adicionar a reserva à lista de reservas
@@ -351,23 +347,36 @@ namespace iCantina.Views
             {
                 try
                 {
-                    // Obter o cliente associado à reserva
-                    Cliente cliente = reserva.Cliente;
+                    // Obter o cliente selecionado
+                    Cliente clienteSelecionado = ObterClienteSelecionado(); // Implemente a função ObterClienteSelecionado conforme mencionado anteriormente
+
+                    if (clienteSelecionado == null)
+                    {
+                        MessageBox.Show("Selecione um cliente (estudante ou professor) para marcar a reserva.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+
+                    // Verificar se o cliente selecionado é do mesmo tipo que o cliente associado à reserva
+                    if (clienteSelecionado.GetType() != reserva.Cliente.GetType())
+                    {
+                        MessageBox.Show($"Você não tem permissão para marcar esta reserva. Apenas um {reserva.Cliente.GetType().Name.ToLower()} pode marcar esta reserva.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
 
                     // Verificar se o saldo do cliente é suficiente para cobrir o total gasto
-                    if (cliente.Saldo >= reserva.TotalGasto)
+                    if (clienteSelecionado.Saldo >= reserva.TotalGasto)
                     {
                         // Subtrair o total gasto do saldo do cliente
-                        cliente.Saldo -= reserva.TotalGasto;
+                        clienteSelecionado.Saldo -= reserva.TotalGasto;
 
                         // Atualizar o saldo do cliente no banco de dados
-                        if (cliente is Estudante)
+                        if (clienteSelecionado is Estudante)
                         {
-                            estudanteController.UpdateEstudante((Estudante)cliente);
+                            estudanteController.UpdateEstudante((Estudante)clienteSelecionado);
                         }
-                        else if (cliente is Professor)
+                        else if (clienteSelecionado is Professor)
                         {
-                            professorController.UpdateProfessor((Professor)cliente);
+                            professorController.UpdateProfessor((Professor)clienteSelecionado);
                         }
 
                         MessageBox.Show("Reserva marcada com sucesso e saldo atualizado!");
@@ -386,6 +395,23 @@ namespace iCantina.Views
             {
                 MessageBox.Show("Selecione uma reserva para marcar.", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+
+        }
+
+        private Cliente ObterClienteSelecionado()
+        {
+            // Implemente lógica para obter o cliente selecionado por um funcionário ou usuário administrativo
+            // Exemplo:
+            if (listBox_estudantes.SelectedItems.Count > 0)
+            {
+                return (Cliente)listBox_estudantes.SelectedItem;
+            }
+            else if (listBox_Professores.SelectedItems.Count > 0)
+            {
+                return (Cliente)listBox_Professores.SelectedItem;
+            }
+
+            return null; // Retorne null se nenhum cliente estiver selecionado
         }
     }
 }

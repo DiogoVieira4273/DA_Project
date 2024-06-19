@@ -23,10 +23,11 @@ namespace iCantina.Models
 
         public override string ToString()
         {
-            //return $"Reserva #{Id}, Cliente: {Cliente.Name}, Prato: {Prato.Tipo} Multa: {Multa.Valor}";
+            string tipoCliente = Cliente.GetType() == typeof(Estudante) ? "Estudante" : "Professor";
+
             // Formatação básica dos atributos da reserva
             StringBuilder sb = new StringBuilder();
-            sb.Append($"Reserva #{Id}, Cliente: {Cliente.Name}, Prato: {Prato.Descricao},Total Gasto: {TotalGasto:C2}");
+            sb.Append($"Reserva #{Id}, Tipo Cliente: {tipoCliente}, Prato: {Prato.Descricao}, Total Gasto: {TotalGasto:C2}");
 
             // Verifica se há extras selecionados e adiciona seus nomes à string
             if (Extras.Count > 0)

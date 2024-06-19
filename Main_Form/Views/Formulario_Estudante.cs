@@ -17,7 +17,7 @@ namespace iCantina.Views
         private BindingList<Estudante> listaEstudante = new BindingList<Estudante>();
         public CantinaContext db;
         private EstudanteController estudController;
-        public Formulario_Estudante (CantinaContext db)
+        public Formulario_Estudante(CantinaContext db)
         {
             this.db = db;
             this.estudController = new EstudanteController(this.db);
@@ -54,7 +54,7 @@ namespace iCantina.Views
                     estudante.NIF = int.Parse(textBox_nifEstudante.Text);
                     estudante.Saldo = decimal.Parse(textBox_saldoEstudante.Text);
                     estudante.NumEstudante = int.Parse(textBox_nEstudante.Text);
-                    estudController.UpdateEstudante(estudante.Id,estudante.Name,estudante.NIF,estudante.Saldo, estudante.NumEstudante);
+                    estudController.UpdateEstudante(estudante.Id, estudante.Name, estudante.NIF, estudante.Saldo, estudante.NumEstudante);
                     AtualizarListBoxEstudantes();
                 }
                 else
